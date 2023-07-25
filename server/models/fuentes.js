@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-require('../utils/mongo_db') 
-const fs = require('fs');
+const mongoose = require("mongoose");
+require("../utils/mongo_db");
 
 const fuentesSchema = new mongoose.Schema({
   CODIGO: {
@@ -37,9 +36,9 @@ const fuentesSchema = new mongoose.Schema({
   latitud: {
     type: Number,
     required: true,
-  }
-  });
-  
-  const Fuentes = mongoose.model('Fuentes', fuentesSchema);
-  
-  module.exports = Fuentes;
+  },
+});
+
+const Fuentes = mongoose.model("Fuentes", fuentesSchema);
+
+module.exports = Fuentes;
