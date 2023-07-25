@@ -8,6 +8,11 @@ const error404 = require('./middlewares/error404');
 
 const app = express();
 const port = 3000;
+const router = require("./routes/api-router");
+
+app.use(express.json());
+
+app.use("/api", router);
 
 const dataRoutes = require('./routes/data_routes');
 
