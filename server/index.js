@@ -9,10 +9,16 @@ const error404 = require('./middlewares/error404');
 const app = express();
 const port = 3000;
 
+const dataRoutes = require('./routes/data_routes');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 app.use(express.static('public'));
+
+
+//Rutas API
+app.use('/api', dataRoutes);
 
 // Errores
 app.use(error404);

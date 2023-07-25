@@ -4,7 +4,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 
 if(process.env.MG_PASSWORD) {
-    mongoose.connect(`mongodb+srv://rebeca:${process.env.MG_PASSWORD}@cluster0.knt8hoq.mongodb.net/eventbrite?retryWrites=true&w=majority`, {
+    mongoose.connect(`mongodb+srv://rebeca:${process.env.MG_PASSWORD}@cluster0.j7y594m.mongodb.net/Data?retryWrites=true&w=majority`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
