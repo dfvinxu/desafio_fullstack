@@ -1,9 +1,10 @@
 import Login from "./Login"
-
+import Register from "./Register"
 const Main = () => {
   return(
     <main>
-      <Login />
+      {/* <Login /> */}
+      <Register />
     </main>
   );
 };
