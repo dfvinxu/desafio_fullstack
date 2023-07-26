@@ -1,5 +1,6 @@
 import React from "react";
 import BackButton from "../BackButton/BackButton";
+import EnterOptions from "../EnterOptions/EnterOptions";
 
 const Register = () => {
   return(
@@ -29,15 +30,7 @@ const Register = () => {
           </label>
           <button>Registrarse</button>
         </form>
-        <article className="register-text">
-          <span>Registrate a través de</span>
-          <div className="separator"></div>
-        </article>
-        <article className="register-options">
-          <button className="register-option">
-            <img src="./svg/google-icon.svg" alt="Logo de Google" />
-          </button>
-        </article>
+        <EnterOptions />
       </section>
       <span className="login-link">¿Ya tienes una cuenta? <a href="">Iniciar sesión</a></span>
     </>
