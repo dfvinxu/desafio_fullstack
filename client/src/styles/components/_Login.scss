@@ -1,0 +1,39 @@
+.title-login{
+    font-size: 1.8rem;
+    width: 70%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 40px;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .forgot-password{
+            align-self: flex-end;
+            margin-bottom: 30px;
+        }
+        label{
+            width: 100%;
+            input {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+        button{
+            padding: 10px;
+        }
+        
+    }
+}
+
+.register-link{
+    text-align: center;
+    a{
+        display: inline;
+    }
+
+}

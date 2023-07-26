@@ -1,5 +1,11 @@
+import Login from "./Login"
+
 const Main = () => {
-  return <div>Main</div>;
+  return(
+    <main>
+      <Login />
+    </main>
+  );
 };
 
 export default Main;
