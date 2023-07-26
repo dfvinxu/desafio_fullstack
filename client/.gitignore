@@ -7,30 +7,18 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Node.js
-node_modules/
-
-# Build output
-dist/
-dist-ssr/
-
-# Local development environment files
+node_modules
+dist
+dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/
+.vscode/*
 !.vscode/extensions.json
-
-# JetBrains IDEs
-.idea/
-
-# macOS specific files
+.idea
 .DS_Store
-
-# Visual Studio-specific files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
