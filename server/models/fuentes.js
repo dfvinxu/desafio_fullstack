@@ -36,9 +36,10 @@ const fuentesSchema = new mongoose.Schema({
   latitud: {
     type: Number,
     required: true,
-  },
+  }
 });
-
-const Fuentes = mongoose.model("Fuentes", fuentesSchema);
+  
+const Fuentes = mongoose.model('Fuentes', fuentesSchema);
 
 module.exports = Fuentes;
+
