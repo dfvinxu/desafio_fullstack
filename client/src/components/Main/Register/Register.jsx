@@ -32,14 +32,35 @@ const Register = () => {
               placeholder="Nombre de usuario"
             />
           </label>
-          <label htmlFor="email">
-            <input type="email" id="email" name="email" placeholder="Email" />
+          <label htmlFor="name">
+            <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nombre" /> 
+          </label>
+          <label htmlFor="surname">
+            <input
+            type="text"
+            id="surname"
+            name="surname"
+            placeholder="Apellidos" /> 
+          </label>
+          <label htmlFor="age">
+            <input
+            type="text"
+            id="age"
+            name="age"
+            placeholder="Edad" /> 
           </label>
           <select htmlFor="country">
             <option value="spain">ESPAÑA</option>
             <option value="spain">ESPAÑA</option>
             <option value="spain">ESPAÑA</option>
           </select>
+          <label htmlFor="email">
+            <input type="email" id="email" name="email" placeholder="Email" />
+          </label>          
           <label htmlFor="password">
             <input
               type="password"
