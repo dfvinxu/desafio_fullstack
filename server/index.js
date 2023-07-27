@@ -3,11 +3,9 @@ const app = express();
 const port = 3000;
 const router = require("./routes/api-router");
 const authRoutes = require("./routes/auth_routes");
-
+require("./utils/mongo_db");
 const morgan = require("./utils/morgan");
 const error404 = require("./middlewares/error404");
-
-require("./utils/mongo_db");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
