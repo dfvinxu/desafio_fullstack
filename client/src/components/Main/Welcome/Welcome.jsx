@@ -29,8 +29,8 @@ const Welcome = () => {
         </label>
       </section>
       <section className="user-actions">
-        <button onClick={() => handleRedirect("/login")}>Iniciar sesión</button>
-        <button onClick={() => handleRedirect("/register")}>Registrarse</button>
+        <button onClick={() => handleRedirect("/login")} className="login-button">Iniciar sesión</button>
+        <button onClick={() => handleRedirect("/register")} className="register-button">Registrarse</button>
       </section>
       <EnterOptions />
     </>
