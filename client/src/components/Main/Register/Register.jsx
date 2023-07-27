@@ -1,35 +1,69 @@
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import EnterOptions from "../EnterOptions/EnterOptions";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LocationContext } from "../../../context/locationContext";
-import axios from "axios";
 
 const Register = () => {
   const { updateLocations } = useContext(LocationContext);
+  const [formData, setFormData] = useState({
+    user: "",
+    name: "",
+    surname: "",
+    birth_date: "",
+    nationality: "",
+    email: "",
+    password: ""
+  })
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let data = Object.fromEntries(new FormData(e.target));
-    console.log(data);
-    const registerUser = async (obj) => {
-      let res = await axios.post("/auth/signup", obj);
-      console.log(res);
-    };
-    registerUser(data);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+
+    const { password, repeatPassword } = formData;
+
+    if (password !== repeatPassword) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+
+    try {
+      const response = await fetch('/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert('Usuario registrado')
+      } else{
+        alert('Error al crear usuario')
+      }
+    } catch(error){
+      console.log('error')
+    }
+  }
+
   return (
     <>
       <BackButton />
       <section className="form-register">
         <h2 className="title-register">¡Hola! Regístrate para empezar</h2>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form"  onSubmit={handleSubmit} >
           <label htmlFor="user">
             <input
               type="text"
               id="user"
               name="user"
               placeholder="Nombre de usuario"
+              value={formData.user}
+              onChange={handleChange}
             />
           </label>
           <label htmlFor="name">
@@ -37,29 +71,38 @@ const Register = () => {
             type="text"
             id="name"
             name="name"
-            placeholder="Nombre" /> 
+            placeholder="Nombre"
+            value={formData.name}
+            onChange={handleChange} /> 
           </label>
           <label htmlFor="surname">
             <input
             type="text"
             id="surname"
             name="surname"
-            placeholder="Apellidos" /> 
+            placeholder="Apellidos"
+            value={formData.surname}
+            onChange={handleChange}/> 
           </label>
-          <label htmlFor="age">
+          <label htmlFor="birth_date">
             <input
             type="text"
-            id="age"
-            name="age"
-            placeholder="Edad" /> 
+            id="birth_date"
+            name="birth_date"
+            placeholder="Fecha de nacimiento"
+            value={formData.birth_date} 
+            onChange={handleChange}/> 
           </label>
-          <select htmlFor="country">
-            <option value="spain">ESPAÑA</option>
-            <option value="spain">ESPAÑA</option>
-            <option value="spain">ESPAÑA</option>
+          <select htmlFor="nationality"  id="nationality" name="nationality" value={formData.nationality} onChange={handleChange}>
+          <option value="NULL">Seleccione una nacionalidad</option>
+            <option value='ES'>ES</option>
+            <option value="FR">FR</option>
+            <option value="GR">GR</option>
           </select>
           <label htmlFor="email">
-            <input type="email" id="email" name="email" placeholder="Email" />
+            <input type="email" id="email" name="email" placeholder="Email" 
+            value={formData.email}
+            onChange={handleChange}/>
           </label>          
           <label htmlFor="password">
             <input
@@ -67,14 +110,17 @@ const Register = () => {
               id="password"
               name="password"
               placeholder="Contraseña"
+              value={formData.password}
+              onChange={handleChange}
             />
           </label>
-          <label htmlFor="repeat-password">
+          <label htmlFor="repeatPassword">
             <input
               type="password"
-              id="repeat-password"
-              name="repeat-password"
+              id="repeatPassword"
+              name="repeatPassword"
               placeholder="Confirmar contraseña"
+              onChange={handleChange}
             />
           </label>
           <button>Registrarse</button>
