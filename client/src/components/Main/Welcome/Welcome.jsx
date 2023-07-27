@@ -1,11 +1,19 @@
 
 import { useNavigate } from "react-router-dom";
 import EnterOptions from "../EnterOptions/EnterOptions";
+import { useContext } from "react";
+import { LocationContext } from "../../../context/locationContext";
 
 const Welcome = () => {
   const navigate = useNavigate()
   const handleClick = (e) => {
     console.log(e.target.value)
+  }
+  const {updateLocations} = useContext(LocationContext)
+
+  const handleRedirect = (link) => {
+    updateLocations(location.pathname)
+    navigate(link)
   }
   return(
     <>
@@ -21,8 +29,8 @@ const Welcome = () => {
         </label>
       </section>
       <section className="user-actions">
-        <button onClick={() => navigate("/login")}>Iniciar sesión</button>
-        <button onClick={() => navigate("/register")}>Registrarse</button>
+        <button onClick={() => handleRedirect("/login")}>Iniciar sesión</button>
+        <button onClick={() => handleRedirect("/register")}>Registrarse</button>
       </section>
       <EnterOptions />
     </>
