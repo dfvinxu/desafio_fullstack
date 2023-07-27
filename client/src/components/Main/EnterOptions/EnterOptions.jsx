@@ -1,3 +1,5 @@
+import { Link, redirect } from "react-router-dom";
+
 const EnterOptions = () => {
   return(
     <section className="socials">
@@ -7,7 +9,9 @@ const EnterOptions = () => {
       </article>
       <article className="register-options">
         <button className="register-option">
-          <img src="./svg/google-icon.svg" alt="Logo de Google" />
+          <a href="/auth/google">
+            <img src="./svg/google-icon.svg" alt="Logo de Google" />
+          </a>
         </button>
       </article>
     </section>
