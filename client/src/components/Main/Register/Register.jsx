@@ -62,13 +62,6 @@ const Register = () => {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-
-    // const { password, repeatPassword } = formData;
-
-    // if (password !== repeatPassword) {
-    //   alert("Las contraseñas no coinciden");
-    //   return;
-    // }
     const isValid = validateForm();
 
     if (isValid) {
