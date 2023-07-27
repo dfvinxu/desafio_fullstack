@@ -6,9 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/auth/signup": {
-        target: "http://localhost:3000"
-      },
+      "/auth/signup":  "http://localhost:3000"
+      ,
       "/auth/login": {
         target: "http://localhost:3000"
       },

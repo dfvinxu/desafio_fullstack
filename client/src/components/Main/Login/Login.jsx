@@ -26,7 +26,7 @@ const Login = () => {
         body: JSON.stringify(userData)
       });
 
-      console.log('Respuesta del servidor:', response);
+      console.log(response);
 
       if (response.ok){
         setIsLoggedIn(true);
