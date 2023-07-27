@@ -1,10 +1,9 @@
 const express = require("express");
 
+require("./utils/mongo_db");
 
-require('./utils/mongo_db')
-
-const morgan = require('./utils/morgan');
-const error404 = require('./middlewares/error404');
+const morgan = require("./utils/morgan");
+const error404 = require("./middlewares/error404");
 
 const app = express();
 const port = 3000;
@@ -18,21 +17,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan(":method :host :status :param[id] - :response-time ms :body"));
 app.use(express.static("public"));
 
-
-
-const dataRoutes = require('./routes/data_routes');
-const authRoutes = require('./routes/auth_routes');
+const dataRoutes = require("./routes/data_routes");
+const authRoutes = require("./routes/auth_routes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
-app.use(express.static('public'));
-
+app.use(morgan(":method :host :status :param[id] - :response-time ms :body"));
+app.use(express.static("public"));
 
 //Rutas API
-app.use('/api', dataRoutes);
+app.use("/api", dataRoutes);
 app.use("/api", router);
-app.use('/', authRoutes);
+app.use("/", authRoutes);
 
 // Errores
 app.use(error404);
