@@ -1,0 +1,423 @@
+{
+    "Color": {
+        "White": {
+            "value": "#ffffff",
+            "type": "color"
+        },
+        "Primary": {
+            "Regular": {
+                "value": "#4b8bff",
+                "type": "color"
+            },
+            "Light": {
+                "value": "#b2ceff",
+                "type": "color"
+            },
+            "Dark": {
+                "value": "#002d80",
+                "type": "color"
+            },
+            "XLight": {
+                "value": "#e5efff",
+                "type": "color"
+            },
+            "XXLight": {
+                "value": "#fafcff",
+                "type": "color"
+            }
+        },
+        "Neutral": {
+            "Light": {
+                "value": "#e6e6e6",
+                "type": "color"
+            },
+            "Regular": {
+                "value": "#999999",
+                "type": "color"
+            },
+            "XDark": {
+                "value": "#333333",
+                "type": "color"
+            },
+            "Dark": {
+                "value": "#666666",
+                "type": "color"
+            }
+        },
+        "Gradient": {
+            "Shadow": {
+                "value": "linear-gradient(180deg, #9e9e9e 0%, #d9d9d900 14.58%)",
+                "type": "color"
+            }
+        },
+        "Semantic": {
+            "Green": {
+                "value": "#2bcb75",
+                "type": "color"
+            },
+            "Yellow": {
+                "value": "#ffdf6c",
+                "type": "color"
+            },
+            "Red": {
+                "value": "#d13037",
+                "type": "color"
+            }
+        }
+    },
+    "fontFamilies": {
+        "urbanist": {
+            "value": "Urbanist",
+            "type": "fontFamilies"
+        }
+    },
+    "lineHeights": {
+        "0": {
+            "value": "AUTO",
+            "type": "lineHeights"
+        },
+        "1": {
+            "value": "130%",
+            "type": "lineHeights"
+        }
+    },
+    "fontWeights": {
+        "urbanist-0": {
+            "value": "Bold",
+            "type": "fontWeights"
+        },
+        "urbanist-1": {
+            "value": "Medium",
+            "type": "fontWeights"
+        },
+        "urbanist-2": {
+            "value": "Regular",
+            "type": "fontWeights"
+        },
+        "urbanist-3": {
+            "value": "SemiBold",
+            "type": "fontWeights"
+        }
+    },
+    "fontSize": {
+        "0": {
+            "value": "8",
+            "type": "fontSizes"
+        },
+        "1": {
+            "value": "14",
+            "type": "fontSizes"
+        },
+        "2": {
+            "value": "15",
+            "type": "fontSizes"
+        },
+        "3": {
+            "value": "16",
+            "type": "fontSizes"
+        },
+        "4": {
+            "value": "20",
+            "type": "fontSizes"
+        },
+        "5": {
+            "value": "30",
+            "type": "fontSizes"
+        }
+    },
+    "letterSpacing": {
+        "0": {
+            "value": "0%",
+            "type": "letterSpacing"
+        },
+        "1": {
+            "value": "-1%",
+            "type": "letterSpacing"
+        },
+        "2": {
+            "value": "1%",
+            "type": "letterSpacing"
+        }
+    },
+    "paragraphSpacing": {
+        "0": {
+            "value": "0",
+            "type": "paragraphSpacing"
+        },
+        "1": {
+            "value": "2",
+            "type": "paragraphSpacing"
+        }
+    },
+    "Heading": {
+        "Large": {
+            "Bold": {
+                "20px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-0}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.4}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            },
+            "Medium": {
+                "20px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-1}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.4}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            }
+        },
+        "Medium": {
+            "Bold": {
+                "16px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-0}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.3}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            }
+        },
+        "XLarge": {
+            "Bold": {
+                "30px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-0}",
+                        "lineHeight": "{lineHeights.1}",
+                        "fontSize": "{fontSize.5}",
+                        "letterSpacing": "{letterSpacing.1}",
+                        "paragraphSpacing": "{paragraphSpacing.1}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            }
+        }
+    },
+    "Body": {
+        "Medium": {
+            "Regular": {
+                "16px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-2}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.3}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            },
+            "Medium": {
+                "15px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-1}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.2}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            },
+            "Semibold": {
+                "14px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-3}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.1}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                },
+                "15px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-3}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.2}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            },
+            "Bold": {
+                "15px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-0}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.2}",
+                        "letterSpacing": "{letterSpacing.2}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            }
+        },
+        "XSmall": {
+            "Semibold": {
+                "8px": {
+                    "value": {
+                        "fontFamily": "{fontFamilies.urbanist}",
+                        "fontWeight": "{fontWeights.urbanist-3}",
+                        "lineHeight": "{lineHeights.0}",
+                        "fontSize": "{fontSize.0}",
+                        "letterSpacing": "{letterSpacing.0}",
+                        "paragraphSpacing": "{paragraphSpacing.0}",
+                        "paragraphIndent": "{paragraphIndent.0}",
+                        "textCase": "{textCase.none}",
+                        "textDecoration": "{textDecoration.none}"
+                    },
+                    "type": "typography"
+                }
+            }
+        }
+    },
+    "textCase": {
+        "none": {
+            "value": "none",
+            "type": "textCase"
+        }
+    },
+    "textDecoration": {
+        "none": {
+            "value": "none",
+            "type": "textDecoration"
+        }
+    },
+    "paragraphIndent": {
+        "0": {
+            "value": "0px",
+            "type": "dimension"
+        }
+    },
+    "Small": {
+        "value": "8",
+        "type": "borderRadius"
+    },
+    "Outlined button": {
+        "value": {
+            "color": "#4B8BFF",
+            "style": "solid",
+            "width": "1"
+        },
+        "type": "border"
+    },
+    "Large": {
+        "value": "24",
+        "type": "borderRadius"
+    },
+    "Medium": {
+        "value": "16",
+        "type": "borderRadius"
+    },
+    "Outlined textfield": {
+        "value": {
+            "color": "#E5EFFF",
+            "width": "1",
+            "style": "solid"
+        },
+        "type": "border"
+    },
+    "Shadow": {
+        "value": {
+            "x": "0",
+            "y": "2",
+            "blur": "8",
+            "spread": "0",
+            "color": "rgba(0,0,0,0.25)",
+            "type": "dropShadow"
+        },
+        "type": "boxShadow"
+    },
+    "Giant": {
+        "value": "50",
+        "type": "borderRadius"
+    },
+    "Icon": {
+        "value": {
+            "color": "{Color.Neutral.XDark}"
+        },
+        "type": "border"
+    },
+    "icon white": {
+        "value": {
+            "color": "{Color.White}",
+            "width": "1.5",
+            "style": "solid"
+        },
+        "type": "border"
+    },
+    "icon blue": {
+        "value": {
+            "color": "{Color.Primary.Regular}",
+            "width": "1.5",
+            "style": "solid"
+        },
+        "type": "border"
+    },
+    "Horizontalpadding": {
+        "button": {
+            "value": "18",
+            "type": "spacing"
+        }
+    },
+    "Button": {
+        "W": {
+            "value": "312",
+            "type": "sizing"
+        },
+        "H": {
+            "value": "56",
+            "type": "sizing"
+        }
+    }
+}
