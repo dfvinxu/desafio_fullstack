@@ -1,15 +1,14 @@
-const express = require('express');
+const express = require("express");
 const authRouter = express.Router();
-// const authMiddleware = require('../middlewares/authMiddleware')
-const authController = require('../controllers/auth')
+const authController = require("../controllers/auth");
 
-//LOG IN 
-authRouter.post('/auth/login', authController.checkEmailLogIn)
+//LOG IN
+authRouter.post("login", authController.checkEmailLogIn);
 
 // //SIGN UP
-authRouter.post('/auth/signup', authController.signUpUser)
+authRouter.post("/signup", authController.signUpUser);
 
 // // Log out
 // authRouter.get('/logout', authMiddleware.authCheck, authController.destroySessionAndClearCookies);
 
-module.exports = authRouter
+module.exports = authRouter;
