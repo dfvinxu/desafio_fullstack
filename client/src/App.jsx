@@ -1,13 +1,12 @@
-import "../styles/styles.scss";
-import Navbar from "./components/Header/Navbar/Navbar";
-import Map from "./components/Main/Map/Map";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./components/Main";
 
+import "./styles/styles.scss";
 function App() {
   return (
-    <div className="App">
-      <Map />
-      <Navbar />
-    </div>
+    <BrowserRouter>
+      <Main />
+    </BrowserRouter>
   );
 }
 

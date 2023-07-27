@@ -1,0 +1,17 @@
+@import "../utils/mixins.scss";
+.title-login{
+    font-size: 1.8rem;
+    width: 70%;
+}
+
+.form{
+    @include form
+}
+
+.register-link{
+    text-align: center;
+    a{
+        display: inline;
+    }
+
+}
