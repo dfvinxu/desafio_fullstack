@@ -1,0 +1,34 @@
+.socials{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    .register-text{
+        position: relative;
+        text-align: center;
+        span{
+            padding: 10px;
+            background-color: #fff;
+        }
+        .separator{
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: red;
+            z-index: -9999;
+        }
+    }
+
+    .register-options{
+        display: flex;
+        .register-option{
+            padding: 10px;
+            flex-grow: 1;
+            img{
+                height: 30px;
+            }
+        }
+    }
+}
