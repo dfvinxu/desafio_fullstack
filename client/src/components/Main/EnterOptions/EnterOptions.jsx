@@ -1,4 +1,4 @@
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EnterOptions = () => {
   return(
@@ -9,9 +9,9 @@ const EnterOptions = () => {
       </article>
       <article className="register-options">
         <button className="register-option">
-          <a href="/auth/google">
-            <img src="./svg/google-icon.svg" alt="Logo de Google" />
-          </a>
+          <Link to="/auth/google">
+          <img src="./svg/google-icon.svg" alt="Logo de Google" />
+          </Link>
         </button>
       </article>
     </section>
