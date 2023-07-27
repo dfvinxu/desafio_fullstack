@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import EnterOptions from "../EnterOptions/EnterOptions";
 
@@ -32,7 +32,7 @@ const Register = () => {
         </form>
         <EnterOptions />
       </section>
-      <span className="login-link">¿Ya tienes una cuenta? <a href="">Iniciar sesión</a></span>
+      <span className="login-link">¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión</Link></span>
     </>
   );
 };

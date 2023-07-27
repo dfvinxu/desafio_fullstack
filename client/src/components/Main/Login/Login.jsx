@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 
 const Login = () => {
@@ -13,11 +14,11 @@ const Login = () => {
         <label htmlFor="password">
           <input type="password" id="password" placeholder="Introduce tu contraseña"/>
         </label>
-        <span className="forgot-password">¿Has olvidado la contraseña?</span>
+        <span className="forgot-password"><a href="">¿Has olvidado la contraseña?</a></span>
         <button>Iniciar sesión</button>
       </form>
     </section>
-    <span className="register-link">¿No tienes una cuenta? <a href="">Regístrate</a></span>
+    <span className="register-link">¿No tienes una cuenta? <Link to={"/register"}>Regístrate</Link></span>
     </>
   );  
 };

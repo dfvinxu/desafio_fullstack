@@ -1,7 +1,9 @@
 
+import { useNavigate } from "react-router-dom";
 import EnterOptions from "../EnterOptions/EnterOptions";
 
 const Welcome = () => {
+  const navigate = useNavigate()
   const handleClick = (e) => {
     console.log(e.target.value)
   }
@@ -19,8 +21,8 @@ const Welcome = () => {
         </label>
       </section>
       <section className="user-actions">
-        <button>Iniciar sesión</button>
-        <button>Registrarse</button>
+        <button onClick={() => navigate("/login")}>Iniciar sesión</button>
+        <button onClick={() => navigate("/register")}>Registrarse</button>
       </section>
       <EnterOptions />
     </>
