@@ -39,11 +39,19 @@ const Register = () => {
     for (const field in validations) {
       if (!formData[field]) {
         errors[field] = validations[field];
+      } else if (field === "email") {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailRegex.test(formData.email)) {
+            errors.email = validations.email;
+        }
+      } else if (field === "password") {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+          if (!passwordRegex.test(formData.password)) {
+          errors.password = validations.password;
+        }
+      } else if (field === "repeatPassword" && formData.password !== formData.repeatPassword) {
+          errors.repeatPassword = validations.repeatPassword;
       }
-    }
-
-    if (formData.password !== formData.repeatPassword) {
-      errors.repeatPassword = validations.repeatPassword;
     }
 
     setErrors(errors);
@@ -55,7 +63,7 @@ const Register = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    const { password, repeatPassword } = formData;
+    // const { password, repeatPassword } = formData;
 
     // if (password !== repeatPassword) {
     //   alert("Las contraseñas no coinciden");
@@ -141,7 +149,6 @@ const Register = () => {
           {errors.nationality && <span className="error-message">{errors.nationality}</span>}
           <label htmlFor="email">
             <input 
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             type="email" 
             id="email" 
             name="email" 
@@ -152,7 +159,6 @@ const Register = () => {
           </label>          
           <label htmlFor="password">
             <input
-              pattern="^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$"
               type="password"
               id="password"
               name="password"
