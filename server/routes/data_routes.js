@@ -6,7 +6,8 @@ const dataController = require('../controllers/data_controllers');
 
 dataRouter.get('/fuentes', dataController.getFuentes);
 dataRouter.get('/museos', dataController.getMuseos);
-dataRouter.get('/oficinas-turismo', dataController.getOficinas)
+dataRouter.get('/oficinas-turismo', dataController.getOficinas);
+dataRouter.get('/monumentos', dataController.getMonumentos);
 
 
 module.exports = dataRouter;

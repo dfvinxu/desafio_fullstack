@@ -22,6 +22,7 @@ const signUpUser = async (req, res, next) => {
     };
     const createdUser = await User.create(newUser);
     req.user = { email: createdUser.email };
+    res.json({ msj: "Usuario registrado exitosamente." });
     next();
   } catch (error) {
     console.log("Error:", error);
