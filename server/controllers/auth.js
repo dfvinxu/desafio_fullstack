@@ -22,6 +22,8 @@ const signUpUser = async (req, res) => {
     };
     const createdUser = await User.create(newUser);
     req.user = { email: createdUser.email };
+    res.json({ msj: "Usuario registrado exitosamente." });
+    next();
   } catch (error) {
     console.log("Error:", error);
     res.status(500).json({ msj: "Error en el registro" });
