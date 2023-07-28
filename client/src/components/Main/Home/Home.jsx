@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import {useLoadScript} from "@react-google-maps/api"
 import Map from "./Map"
 import Navbar from "./Navbar" 
+import Weather from "../Weather/Weather";
 
 
 const Home = () => {
@@ -13,8 +14,10 @@ const Home = () => {
   
   return(
     <>
+      <Weather />
       <Navbar />
       <Map />
+      
     </>
   );
 };
