@@ -1,4 +1,3 @@
-import React from "react";
 import {GoHome} from "react-icons/go"
 import {LuPartyPopper} from "react-icons/lu"
 import {AiOutlineHeart, AiOutlineUser} from "react-icons/ai"

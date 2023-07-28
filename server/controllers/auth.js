@@ -75,12 +75,13 @@ const googleLogin = (req, res) => {
     expiresIn: "7d",
   });
   // console.log(req.user);
-  res.status(200).cookie("access-token", token, {
-    httpOnly: true,
-    sameSite: "none",
-  });
-
-  res.redirect("http://localhost:5173/home");
+  res
+    .status(200)
+    .cookie("access-token", token, {
+      httpOnly: true,
+      sameSite: "lax",
+    })
+    .redirect("http://localhost:5173/home");
 };
 
 module.exports = {
