@@ -1,0 +1,50 @@
+@import "./_variables";
+
+@mixin form{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 40px;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .forgot-password{
+            align-self: flex-end;
+            margin-bottom: 30px;
+            color: $color-neutral-dark;
+
+            a{
+                color: $color-neutral-dark;
+            }
+        }
+        label{
+            width: 100%;
+            input{
+                @include input;
+            }
+        }
+        button{
+            background-color: $color-primary-regular;
+            color: $color-white;
+            border: 2px solid $color-primary-light;
+            border-radius: 8px;
+            @include button;
+        }
+    }
+}
+
+@mixin input {
+    width: 100%;
+    padding: 20px 10px;
+    border-radius: 8px;
+    color: $color-neutral-regular;
+    border: 2px solid $color-primary-x-light;
+    background-color: $color-primary-xx-light;
+}
+
+@mixin button{
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
