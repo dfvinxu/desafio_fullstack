@@ -17,8 +17,10 @@ const Map = () => {
   const center = useMemo(() => (coords), [])
   return(
     <>
-      <GoogleMap zoom={15} center={center} mapContainerClassName="map-container">
-        <Marker position={center}/>
+      <GoogleMap zoom={15} center={center} mapContainerClassName="map-container" options={{
+        disableDefaultUI: true,
+        mapId: "cce25c7cd1c6e94e",
+      }}>
       </GoogleMap>
     </>
   )
