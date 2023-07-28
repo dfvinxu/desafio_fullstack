@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // SIGNUP
-const signUpUser = async (req, res, next) => {
+const signUpUser = async (req, res) => {
   try {
     const { user, name, surname, email, password, nationality, birth_date } =
       req.body;
@@ -68,8 +68,26 @@ const logOut = (req, res) => {
   res.clearCookie("access-token");
 };
 
+const googleLogin = (req, res) => {
+  const payload = {
+    //save here data
+    check: true,
+  };
+  const token = jwt.sign(payload, `secret_key`, {
+    expiresIn: "7d",
+  });
+  // console.log(req.user);
+  res.status(200).cookie("access-token", token, {
+    httpOnly: true,
+    sameSite: "none",
+  });
+
+  res.redirect("http://localhost:5173/home");
+};
+
 module.exports = {
   checkEmailLogIn,
   signUpUser,
   logOut,
+  googleLogin,
 };
