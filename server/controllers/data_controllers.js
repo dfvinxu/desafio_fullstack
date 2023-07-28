@@ -1,7 +1,8 @@
 const Fuentes = require("../models/fuentes");
 const Museo = require("../models/museos");
 const OficinasTurismo = require("../models/oficinas-turismo");
-const Monumentos = require('../models/monumentos');
+const zonasVerdes = require('../models/zonasVerdes');
+const Piscinas = require('../models/piscinas')
 
 // GET FUENTES
 const getFuentes = async (req, res) => {
@@ -22,8 +23,14 @@ const getOficinas = async (req, res) => {
 };
 
 //GET MONUMENTOS
-const getMonumentos = async (req, res) => {
-  const data = await Monumentos.find();
+const getZonasVerdes = async (req, res) => {
+  const data = await zonasVerdes.find();
+  res.status(200).json(data);
+};
+
+//GET PISCINAS
+const getpPiscinas = async (req, res) => {
+  const data = await Piscinas.find();
   res.status(200).json(data);
 };
 
@@ -31,5 +38,6 @@ module.exports = {
   getFuentes,
   getMuseos,
   getOficinas,
-  getMonumentos
+  getZonasVerdes,
+  getpPiscinas
 };
