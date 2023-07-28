@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // SIGNUP
-const signUpUser = async (req, res) => {
+const signUpUser = async (req, res, next) => {
   try {
     const { user, name, surname, email, password, nationality, birth_date } =
       req.body;
@@ -22,6 +22,7 @@ const signUpUser = async (req, res) => {
     };
     const createdUser = await User.create(newUser);
     req.user = { email: createdUser.email };
+    next();
   } catch (error) {
     console.log("Error:", error);
     res.status(500).json({ msj: "Error en el registro" });
