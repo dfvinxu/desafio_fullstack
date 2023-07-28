@@ -1,0 +1,31 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    background-color: $color-white;
+    border-radius: 20px 20px 0px 0px;
+    padding-bottom: 10px;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 9999;
+
+    .item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        padding: 20px;
+        span{
+            font-size: 0.5rem
+        }
+    }
+    .item.active{
+        color: $color-white;
+        background-color: $color-primary-regular;
+        border-radius: 20px;
+    }
+}

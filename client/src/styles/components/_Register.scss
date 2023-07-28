@@ -1,0 +1,27 @@
+@import "../utils/mixins.scss";
+@import "../utils/_variables.scss";
+
+.title-register{
+    font-size: 2rem;
+}
+
+.form-register{
+    @include form;
+    select {
+        width: 100%;
+        padding: 20px 10px;
+        option{
+            width: 100%;
+            padding: 20px 10px;
+        }
+    }
+}
+
+
+.login-link{
+    text-align: center;
+    a{
+        color: $color-primary-regular;
+        text-decoration: none;
+    }
+}
