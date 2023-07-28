@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import EnterOptions from "../EnterOptions/EnterOptions";
 import { useContext, useState } from "react";
@@ -7,6 +7,7 @@ import { LocationContext } from "../../../context/locationContext";
 const Register = () => {
   const { updateLocations } = useContext(LocationContext);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     user: "",
     name: "",
@@ -75,7 +76,8 @@ const Register = () => {
       });
 
       if (response.ok) {
-        alert('Usuario registrado')
+        alert('Usuario registrado');
+        navigate('/login');
       } else{
         alert('Error al crear usuario')
       }
