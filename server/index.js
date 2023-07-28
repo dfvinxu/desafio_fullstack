@@ -34,7 +34,6 @@ app.use("/api", router);
 
 // Rutas User
 app.use("/", authRoutes);
-
 // Errores
 app.use(error404);
 
