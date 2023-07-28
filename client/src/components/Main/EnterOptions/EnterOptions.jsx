@@ -8,11 +8,9 @@ const EnterOptions = () => {
         <div className="separator"></div>
       </article>
       <article className="register-options">
-        <button className="register-option">
-          <Link to="/auth/google">
+        <a href="/auth/google" className="register-option">
           <img src="./svg/google-icon.svg" alt="Logo de Google" />
-          </Link>
-        </button>
+        </a>
       </article>
     </section>
   );
