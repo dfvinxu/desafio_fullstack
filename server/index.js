@@ -22,6 +22,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
 
+const allowedOrigins = ["http://localhost:5173"];
+
+app.use(cors({
+  origin: allowedOrigins,
+}));
+
 //Rutas API
 app.use("/api", router);
 app.use("/auth", authRoutes);
