@@ -5,8 +5,9 @@ const Weather = () => {
 
   useEffect(() => {
     const fetchTemperatureData = async () => {
-      const hours = Array.from({ length: 7 }, (_, i) => i * 2 + 12); // Array con las horas de 12 a 6 (PM y AM)
       const currentDate = new Date();
+      const currentHour = currentDate.getHours();
+      const hours = Array.from({ length: 12 }, (_, i) => (currentHour + i * 2) % 24); // Generar horas a partir de la hora actual
       const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth() + 1;
       const currentDay = currentDate.getDate();
@@ -34,7 +35,7 @@ const Weather = () => {
 
   return (
     <div>
-      <h2>Predicción de temperatura en Madrid</h2>
+      <h2>El tiempo en Madrid</h2>
       {temperatureData.length > 0 ? (
         <ul>
           {temperatureData.map((data) => (

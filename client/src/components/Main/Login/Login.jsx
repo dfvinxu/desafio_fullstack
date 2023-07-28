@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,7 +35,7 @@ const Login = () => {
         navigate('/home');
 
       } else {
-        alert('Email o contraseña no coincide')
+        setError('Email o contraseña no coincide')
       }
     } catch(error){
       console.error('Error')
@@ -64,6 +65,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          {error && <p className="error-message">{error}</p>}{setError}
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>
