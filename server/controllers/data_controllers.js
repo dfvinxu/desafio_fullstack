@@ -29,7 +29,7 @@ const getZonasVerdes = async (req, res) => {
 };
 
 //GET PISCINAS
-const getpPiscinas = async (req, res) => {
+const getPiscinas = async (req, res) => {
   const data = await Piscinas.find();
   res.status(200).json(data);
 };
@@ -39,5 +39,5 @@ module.exports = {
   getMuseos,
   getOficinas,
   getZonasVerdes,
-  getpPiscinas
+  getPiscinas
 };
