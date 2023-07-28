@@ -1,14 +1,25 @@
-import React from "react";
-import Navbar from "./Navbar/Navbar";
-import Map from "./Map/Map";
+import { useMemo } from "react";
+import { useLoadScript } from "@react-google-maps/api";
+import Map from "./Map";
+import Navbar from "./Navbar";
+import SearchBar from "./SearchBar/SearchBar";
+import Icons from "./Icons/Icons";
 
-function Home() {
+const Home = () => {
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API,
+  });
+
+  if (!isLoaded) return <div>Loading...</div>;
+
   return (
-    <section className="home">
+    <>
+      <SearchBar />
+      <Icons />
       <Map />
       <Navbar />
-    </section>
+    </>
   );
-}
+};
 
 export default Home;

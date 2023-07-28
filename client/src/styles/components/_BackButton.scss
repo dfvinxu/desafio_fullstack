@@ -1,4 +1,12 @@
+@import "../utils/_variables";
+
 .back-button{
-    padding: 10px;
     width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-white;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid $color-primary-light;
 }

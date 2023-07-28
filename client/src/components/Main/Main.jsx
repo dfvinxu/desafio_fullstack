@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { LocationContext } from "../../context/locationContext";
 import Login from "./Login";
 import Register from "./Register";
