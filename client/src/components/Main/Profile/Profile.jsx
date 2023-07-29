@@ -28,7 +28,7 @@ const Profile = () => {
         </div>
         <div className="section">
           <h2>
-            <GrFavorite /> Favoritos <GrFormNext className="next-icon" />
+            <GrFavorite /> Tu Actividad <GrFormNext className="next-icon" />
           </h2>
         </div>
         <div className="section">
