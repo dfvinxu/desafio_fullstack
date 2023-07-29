@@ -2,8 +2,6 @@ import { useMemo } from "react";
 import { useLoadScript } from "@react-google-maps/api";
 import Map from "./Map";
 import Navbar from "./Navbar";
-import SearchBar from "./SearchBar/SearchBar";
-import Icons from "./Icons/Icons";
 
 const Home = () => {
   const { isLoaded } = useLoadScript({
@@ -14,8 +12,6 @@ const Home = () => {
 
   return (
     <>
-      <SearchBar />
-      <Icons />
       <Map />
       <Navbar />
     </>
