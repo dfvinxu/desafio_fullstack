@@ -5,8 +5,17 @@
     gap: 10px;
     align-items: flex-start;
     article{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: $color-white;
         border-radius: 50px;
-        padding: 20px;
+        font-size: 1.8rem;
+        padding: 15px;
+    }
+    .active{
+        color: $color-white;
+        background-color: $color-primary-regular;
+        border-radius: 50px;
     }
 }
