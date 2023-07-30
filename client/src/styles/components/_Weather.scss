@@ -103,32 +103,22 @@
     margin-bottom: 2rem;
 }
 
-.days-temp {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0;
-}
-
-.days-item {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
-
-.data-item {
-    margin-right: 10px;
-    text-transform: uppercase;
-}
-
 .sun-icon{
     height: 32px;
     width: 32px;
 }
 
+.luna-icon{
+    height: 25px;
+    width: 25px;
+}
+
+.days-temp{
+    color: $color-primary-regular;
+    font-weight: bold;
+}
 .weather-table {
-    width: 80%;
+    width: 90%;
     border-collapse: collapse;
 }
   
