@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Welcome from "./Welcome/Welcome";
 import Home from "./Home/Home";
+import Weather from "./Weather/Weather";
 const Main = () => {
   const [locations, setLocations] = useState([]);
   const updateLocations = (newLocation) =>
@@ -22,6 +23,7 @@ const Main = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
       </LocationContext.Provider>
     </main>

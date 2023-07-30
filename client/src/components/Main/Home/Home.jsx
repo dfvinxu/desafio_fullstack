@@ -1,7 +1,6 @@
 import {useLoadScript} from "@react-google-maps/api"
 import Map from "./Map"
 import Navbar from "./Navbar" 
-import Weather from "../Weather/Weather";
 import Filters from "./Filters/Filters";
 import SearchBar from "./SearchBar/SearchBar";
 
@@ -14,10 +13,13 @@ const Home = () => {
   return(
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Weather/>
 =======
       <Weather />
 >>>>>>> bb0150182102746d45f6119a68feb770da2f8cfa
+=======
+>>>>>>> weather
       <article className="inputs">
         <SearchBar />
         <Filters />
