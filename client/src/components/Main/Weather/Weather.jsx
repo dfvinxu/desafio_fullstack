@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { BsFillSunFill } from "react-icons/bs";
 
 const Weather = () => {
   const [temperatureData, setTemperatureData] = useState([]);
@@ -98,24 +97,25 @@ const Weather = () => {
         </article>
         {currentTemperature !== null ? (
           <article className="curr-temp">
-            <p> {currentTemperature} °C  </p>
+            <p> {Math.floor(currentTemperature)} °  </p>
             <article className="curr-des">
-            <p><BsFillSunFill /></p>
+            <p>
+              <img className="sun-icon" src="../../src/assets/sun.png"></img>
+            </p>
             <p>Soleado</p>
             </article>
-            </article>
+          </article>
         ) : (
           <p>Cargando la temperatura actual...</p>
         
         )}
       </section>
       <section className="hour-temp">
-        <h3>Próximas horas</h3>
         {temperatureData.length > 0 ? (
           <ul className="hour-list">
             {temperatureData.map((data) => (
               <li key={data.hour} className="hour-item">
-                {data.hour}:00 - {data.temperature} °C Soleado <BsFillSunFill />
+                {data.hour}:00 <img className="sun-icon" src="../../src/assets/sun.png"></img>  {Math.floor(data.temperature)} ° 
               </li>
             ))}
           </ul>
@@ -124,24 +124,40 @@ const Weather = () => {
         )}
       </section>
       <section className="next-temp">
-        <h3>Temperaturas para los próximos 5 días:</h3>
-        {nextFiveDays.length > 0 ? (
-          <ul>
-            {nextFiveDays.map((data, index) => (
-              <li key={index}>
-                {new Date(currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000).toLocaleDateString("es", {
-                  weekday: "long",
-                  day: "numeric",
-                  month: "long",
-                })}{" "}
-                - {data.Prediccion_temperatura_Madrid} °C Soleado <BsFillSunFill />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Cargando la predicción de temperatura para los próximos días...</p>
-        )}
-      </section>
+  <h3>Temperaturas los próximos 5 días</h3>
+  {nextFiveDays.length > 0 ? (
+    <table className="weather-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th> <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" /></th>
+        </tr>
+      </thead>
+      <tbody>
+        {nextFiveDays.map((data, index) => (
+          <tr key={index}>
+            <td>
+              {new Date(currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000).toLocaleDateString("es", {
+                day: "numeric",
+                weekday: "long"
+              })}
+            </td>
+            <td>
+              <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" />
+            </td>
+            <td>
+              {Math.floor(data.Prediccion_temperatura_Madrid)} °C
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : (
+    <p>Cargando la predicción de temperatura para los próximos días...</p>
+  )}
+</section>
+
     </section>
   );
 };
