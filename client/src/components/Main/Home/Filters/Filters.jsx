@@ -1,4 +1,4 @@
-import React from "react";
+import axios from "axios"
 import {TbFountain} from "react-icons/tb"
 import {PiTree} from "react-icons/pi"
 import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
@@ -6,6 +6,7 @@ import {GiGreekTemple} from "react-icons/gi"
 
 
 const Filters = () => {
+
   return(
     <section className="filters">
       <article>
