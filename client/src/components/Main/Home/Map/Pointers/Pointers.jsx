@@ -1,13 +1,19 @@
-
+import {icons} from "../../../../../../public/icons"
 import { Marker } from "@react-google-maps/api";
-const Pointers = ({points}) => {
+const Pointers = ({markers}) => {
   return(
     <>
-      {points && points.map((ele, i) => <Marker 
-        key={i}
-        icon={{url: "./svg/water.svg", scaledSize: {height: 40, width: 40}}}
-        position={{lat: +ele.latitud, lng: +ele.longitud}}/>)
-      }
+      {markers && markers.map((ele, i) => {
+
+        return(
+          <Marker 
+            key={i}
+            icon={{url: icons[ele["TIPO"]], scaledSize: {height: 40, width: 40}}}
+            position={{lat: +ele.LATITUD, lng: +ele.LONGITUD}}
+          />
+        )
+      }  
+      )}
     </>
   )
 }

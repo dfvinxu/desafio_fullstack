@@ -1,28 +1,40 @@
-import axios from "axios"
+
 import {TbFountain} from "react-icons/tb"
 import {PiTree} from "react-icons/pi"
 import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
 import {GiGreekTemple} from "react-icons/gi"
 import { Link } from "react-router-dom";
+import { getMarkers } from "../../../../../utils/script";
 
 
-const Filters = () => {
-
+const Filters = ({updateMarkers, center, updateTipo}) => {
   return(
     <section className="filters">
-      <article>
+      <article onClick={() => {
+        getMarkers({center, tipo: "fuentes"}).then(res => updateMarkers(res))
+        updateTipo("fuentes")
+      }}>
         <TbFountain />
       </article>
-      <article>
+      <article onClick={() => {
+        getMarkers({center, tipo: "parques"}).then(res => updateMarkers(res))
+        updateTipo("parques")
+      }}>
         <PiTree />
       </article>
       <article>
         <Link to={'/weather'}><FaTemperatureFull /></Link>
       </article>
-      <article>
+      <article onClick={() => {
+        getMarkers({center, tipo: "museos"}).then(res => updateMarkers(res))
+        updateTipo("museos")
+      }}>
         <GiGreekTemple />
       </article>
-      <article>
+      <article onClick={() => {
+        getMarkers({center, tipo: "salud"}).then(res => updateMarkers(res))
+        updateTipo("salud")
+      }}>
         <FaKitMedical />
       </article>
     </section>
