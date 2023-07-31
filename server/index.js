@@ -20,6 +20,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
 
+const allowedOrigins = ["http://localhost:5173"];
 
 app.use(
   cors({
