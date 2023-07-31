@@ -8,14 +8,17 @@ const morgan = require("./utils/morgan");
 const error404 = require("./middlewares/error404");
 const session = require("express-session");
 const passport = require("passport");
-var cors = require('cors');
-const helmet = require('helmet');
+var cors = require("cors");
+const helmet = require("helmet");
+const Markers = require("./models/markers");
 
 const allowedOrigins = ["http://localhost:5173"];
 
-app.use(cors({
-  origin: allowedOrigins,
-}));
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,8 +28,6 @@ app.use(session({ secret: "SECRET" }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
-
-
 
 //Rutas API
 app.use("/api", router);

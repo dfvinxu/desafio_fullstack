@@ -3,6 +3,9 @@ const Museo = require("../models/museos");
 const OficinasTurismo = require("../models/oficinas-turismo");
 const zonasVerdes = require("../models/zonasVerdes");
 const Piscinas = require("../models/piscinas");
+const { Db } = require("mongodb");
+const { Collection } = require("mongoose");
+const Markers = require("../models/markers");
 
 // GET FUENTES
 const getFuentes = async (req, res) => {
@@ -40,10 +43,23 @@ const getPiscinas = async (req, res) => {
   res.status(200).json(data);
 };
 
+const getMarkers = async (req, res) => {
+  let { type } = req.params;
+  let { lat, lng } = req.query;
+  let regex = new RegExp(type, "gi");
+  const data = await Markers.find({
+    TIPO: regex,
+    LATITUD: { $gt: +lat - 0.025, $lt: +lat + 0.025 },
+    LONGITUD: { $gt: +lng - 0.025, $lt: +lng + 0.025 },
+  });
+  res.status(200).json(data);
+};
+
 module.exports = {
   getFuentes,
   getMuseos,
   getOficinas,
   getZonasVerdes,
   getPiscinas,
+  getMarkers,
 };
