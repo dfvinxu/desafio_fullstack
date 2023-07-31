@@ -1,20 +1,15 @@
 const express = require("express");
 const app = express();
 const router = require("./routes/api-router");
+const port = 3000;
 const authRoutes = require("./routes/auth_routes");
-require("./utils/mongo_db");
-const morgan = require("./utils/morgan");
 const error404 = require("./middlewares/error404");
+const morgan = require("./utils/morgan");
 const session = require("express-session");
 const passport = require("passport");
-var cors = require('cors');
-const helmet = require('helmet');
-
-const allowedOrigins = ["http://localhost:5173"];
-
-app.use(cors({
-  origin: allowedOrigins,
-}));
+let cors = require("cors");
+const helmet = require("helmet");
+require("./utils/mongo_db");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,11 +21,17 @@ app.use(passport.session());
 app.use(helmet());
 
 
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 //Rutas API
 app.use("/api", router);
-app.use("/auth", authRoutes);
 
+// Rutas User
+app.use("/", authRoutes);
 // Errores
 app.use(error404);
 
