@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
+import { LocationContext } from '../../../context/locationContext';
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { isLoggedIn, setIsLoggedIn} = useContext(LocationContext)
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
