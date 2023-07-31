@@ -12,14 +12,6 @@ const Home = () => {
   
   return(
     <>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Weather/>
-=======
-      <Weather />
->>>>>>> bb0150182102746d45f6119a68feb770da2f8cfa
-=======
->>>>>>> weather
       <article className="inputs">
         <SearchBar />
         <Filters />
