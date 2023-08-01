@@ -40,6 +40,20 @@ const Profile = () => {
       <div>
         <button className="logout-btn">Cerrar sesión</button>
       </div>
+      {/* Footer */}
+      <footer className="profile-footer">
+        <div className="left-content">
+          <img
+            className="community-flag"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_the_Community_of_Madrid.svg/800px-Flag_of_the_Community_of_Madrid.svg.png"
+            alt="Community of Madrid Flag"
+          />
+          <p>Colaboración especial con la Comunidad de Madrid</p>
+        </div>
+        <div className="center-content">
+          <p>Política y privacidad</p>
+        </div>
+      </footer>
     </article>
   );
 };
