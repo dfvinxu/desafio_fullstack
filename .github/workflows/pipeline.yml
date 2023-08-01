@@ -42,6 +42,15 @@ jobs:
       - name: Deploy server to App Runner
         id: deploy-apprunner-server
         uses: awslabs/amazon-app-runner-deploy@main
+        copy-env-vars: |
+          MG_PASSWORD=${{ secrets.MG_PASSWORD }}
+          DB_HOST=${{ secrets.DB_HOST }}
+          DB_DATABASE=${{ secrets.DB_DATABASE }}
+          DB_USER=${{ secrets.DB_USER }}
+          DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          CLIENT_ID=${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}
         env:
           MG_PASSWORD: ${{ secrets.MG_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
