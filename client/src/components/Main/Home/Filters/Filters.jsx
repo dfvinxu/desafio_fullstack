@@ -1,13 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import {TbFountain} from "react-icons/tb"
 import {PiTree} from "react-icons/pi"
 import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
 import {GiGreekTemple} from "react-icons/gi"
-import { Link } from "react-router-dom";
 import { getMarkers } from "../../../../../utils/script";
 
-
 const Filters = ({updateMarkers, center, updateTipo}) => {
-  console.log(center)
+  const navigate = useNavigate();
   return(
     <section className="filters">
       <article onClick={() => {
@@ -23,7 +22,7 @@ const Filters = ({updateMarkers, center, updateTipo}) => {
         <PiTree />
       </article>
       <article>
-        <Link to={'/weather'}><FaTemperatureFull /></Link>
+        <FaTemperatureFull onClick={() => navigate('/weather')} />
       </article>
       <article onClick={() => {
         getMarkers({center, tipo: "museos"}).then(res => updateMarkers(res))

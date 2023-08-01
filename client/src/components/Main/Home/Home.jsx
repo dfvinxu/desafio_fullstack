@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import {useLoadScript} from "@react-google-maps/api"
+import { useLoadScript } from "@react-google-maps/api"
 import Map from "./Map"
 import Navbar from "./Navbar" 
 import Filters from "./Filters/Filters";
 import SearchBar from "./SearchBar/SearchBar";
 
 
+const libraries = ["places"]
 
 const Home = () => {
   const [markers, setMarkers] = useState([])
@@ -14,7 +15,8 @@ const Home = () => {
   })
   const [tipo, setTipo] = useState(null)
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_API,
+    libraries,
   })
 
   useEffect(() => {
@@ -33,7 +35,7 @@ const Home = () => {
   return(
     <>
       <article className="inputs">
-        <SearchBar />
+        {isLoaded ? <SearchBar updateCoords={updateCoords}/> : null}
         <Filters updateMarkers={updateMarkers} center={coords} updateTipo={updateTipo}/>
       </article>
       <Navbar />

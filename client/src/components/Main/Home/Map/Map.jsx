@@ -1,22 +1,23 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {GoogleMap} from "@react-google-maps/api"
 import Pointers from "./Pointers"
 import { getCenter, getMarkers } from "../../../../../utils/script";
 
 const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
   const mapRef = useRef(null)
-
+  const [map, setMap] = useState(null)
   const handleTileLoad = () => {
     const center = getCenter(mapRef.current)
-    console.log(center)
     getMarkers({center, tipo}).then(res => updateMarkers(res))
     updateCoords(center)
-
   }
+
+  console.log(map)
   return(
     <>
       {coords.lat !== 0 ? 
-      <GoogleMap 
+      <GoogleMap
+        to
         ref={mapRef}
         zoom={15} mapContainerClassName="map-container" options={{
         disableDefaultUI: true,
@@ -26,6 +27,7 @@ const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
         center: coords,
       }} 
         onTilesLoaded={handleTileLoad}
+        onLoad={(map) => setMap(map)}
       >
         {markers && <Pointers markers={markers}/>}
       </GoogleMap>

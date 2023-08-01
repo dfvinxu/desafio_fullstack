@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 const Weather = () => {
   const [temperatureData, setTemperatureData] = useState([]);
   const [currentTemperature, setCurrentTemperature] = useState(null);
@@ -33,7 +33,7 @@ const Weather = () => {
             const day = nextDate.getDate();
 
             return fetch(
-              `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=12`
+              `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=12`
             ).then((response) => response.json());
           });
 
@@ -41,16 +41,16 @@ const Weather = () => {
           setNextFiveDays(nextFiveDaysData);
 
           const currentResponse = await fetch(
-            `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${currentHour}`
+            `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${currentHour}`
           );
           const currentData = await currentResponse.json();
           setCurrentTemperature(currentData.Prediccion_temperatura_Madrid);
 
           const promises = hours.map(async (hour) => {
-            const response = await fetch(
-              `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${hour}`
+            const response = await axios.get(
+              `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${hour}`
             );
-            const data = await response.json();
+            const data = response.data;
             return {
               hour,
               temperature: data.Prediccion_temperatura_Madrid,
@@ -70,7 +70,8 @@ const Weather = () => {
 
         setIsLoading(false);
       } catch (error) {
-        console.error("Error en la solicitud a la API:", error);
+        console.log(error)
+        // console.error("Error en la solicitud a la API:", error);
         setIsLoading(false);
       }
     };
@@ -107,10 +108,9 @@ const Weather = () => {
     const month = nextDate.getMonth() + 1;
     const day = nextDate.getDate();
     const hour = nextDate.getHours();
-
     try {
       const response = await fetch(
-        `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=${hour}`
+        `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=${hour}`
       );
       const data = await response.json();
       return `${Math.floor(data.Prediccion_temperatura_Madrid)} °C`;
