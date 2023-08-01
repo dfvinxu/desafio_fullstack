@@ -8,12 +8,9 @@ const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
 
   const handleTileLoad = () => {
     const center = getCenter(mapRef.current)
+    console.log(center)
     getMarkers({center, tipo}).then(res => updateMarkers(res))
-  }
-  const handleDrag = () => {
-    const {lat, lng} = getCenter(mapRef.current)
-    console.log(lat,lng)
-    updateCoords({lat, lng})
+    updateCoords(center)
 
   }
   return(
@@ -29,7 +26,6 @@ const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
         center: coords,
       }} 
         onTilesLoaded={handleTileLoad}
-        onDrag={handleDrag}
       >
         {markers && <Pointers markers={markers}/>}
       </GoogleMap>

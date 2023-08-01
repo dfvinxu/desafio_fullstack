@@ -10,7 +10,6 @@ const session = require("express-session");
 const passport = require("passport");
 var cors = require("cors");
 const helmet = require("helmet");
-const Markers = require("./models/markers");
 
 const allowedOrigins = ["http://localhost:5173"];
 

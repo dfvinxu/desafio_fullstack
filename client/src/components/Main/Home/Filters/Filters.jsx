@@ -1,4 +1,3 @@
-
 import {TbFountain} from "react-icons/tb"
 import {PiTree} from "react-icons/pi"
 import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
@@ -8,6 +7,7 @@ import { getMarkers } from "../../../../../utils/script";
 
 
 const Filters = ({updateMarkers, center, updateTipo}) => {
+  console.log(center)
   return(
     <section className="filters">
       <article onClick={() => {

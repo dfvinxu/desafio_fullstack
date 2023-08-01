@@ -3,8 +3,6 @@ const Museo = require("../models/museos");
 const OficinasTurismo = require("../models/oficinas-turismo");
 const zonasVerdes = require("../models/zonasVerdes");
 const Piscinas = require("../models/piscinas");
-const { Db } = require("mongodb");
-const { Collection } = require("mongoose");
 const Markers = require("../models/markers");
 
 // GET FUENTES
@@ -15,7 +13,6 @@ const getFuentes = async (req, res) => {
     latitud: { $gt: +lat - 0.02, $lt: +lat + 0.02 },
     longitud: { $gt: +lng - 0.02, $lt: +lng + 0.02 },
   });
-  console.log(data);
   res.status(200).json(data);
 };
 

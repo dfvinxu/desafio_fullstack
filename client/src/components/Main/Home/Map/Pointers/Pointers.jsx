@@ -4,7 +4,6 @@ const Pointers = ({markers}) => {
   return(
     <>
       {markers && markers.map((ele, i) => {
-
         return(
           <Marker 
             key={i}
