@@ -15,6 +15,14 @@ COPY . .
 
 # Establece variables de entorno necesarias
 ENV PORT=3000
+ENV MG_PASSWORD="6JAdnOzzBG0UnoyU"
+ENV DB_HOST="horton.db.elephantsql.com"
+ENV DB_DATABASE="mgbpdkuj"
+ENV DB_USER="mgbpdkuj"
+ENV DB_PASSWORD="eWB5RSUvGTg02c12AvdwjuV4YIRYhRHa"
+ENV JWT_SECRET="qQa23Afda12rSfavbn668"
+ENV CLIENT_ID="747043582960-eq8dfr8o6j3elfra5d77e9k8tiff0njb.apps.googleusercontent.com"
+ENV CLIENT_SECRET="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"
 
 # Expone el puerto en el que se ejecutará el servidor
 EXPOSE $PORT
