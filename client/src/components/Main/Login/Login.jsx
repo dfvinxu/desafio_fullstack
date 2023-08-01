@@ -1,13 +1,13 @@
 import React, {useState, useContext} from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
-import { LocationContext } from '../../../context/locationContext';
+import { AuthContext } from '../../../context/authContext';
 
 const Login = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isLoggedIn, setIsLoggedIn} = useContext(LocationContext)
+  const { isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
@@ -66,7 +66,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
-          {error && <p className="error-message">{error}</p>}{setError}
+          {error && <p className="error-message">{error}</p>}
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>

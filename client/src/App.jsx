@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import Main from "./components/Main";
 import "./styles/styles.scss";
-import { LocationContext } from "./context/locationContext";
+import { AuthContext } from "./context/authContext";
 import { useState } from "react";
 import Cookies from 'js-cookie';
 
@@ -16,9 +16,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <LocationContext.Provider value={userCookie}>
+      <AuthContext.Provider value={userCookie}>
         <Main />
-      </LocationContext.Provider>
+      </AuthContext.Provider>
     </BrowserRouter>
   );
 }
