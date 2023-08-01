@@ -5,6 +5,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Welcome from "./Welcome/Welcome";
 import Home from "./Home/Home";
+import Weather from "./Weather/Weather";
 import Profile from "./Profile/Profile";
 import Eventos from "./Eventos/Eventos";
 const Main = () => {
@@ -26,6 +27,7 @@ const Main = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/eventos" element={<Eventos />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
       </LocationContext.Provider>
     </main>

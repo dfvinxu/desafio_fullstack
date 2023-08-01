@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // SIGNUP
-const signUpUser = async (req, res) => {
+const signUpUser = async (req, res, next) => {
   try {
     const { user, name, surname, email, password, nationality, birth_date } =
       req.body;
@@ -22,7 +22,6 @@ const signUpUser = async (req, res) => {
     };
     const createdUser = await User.create(newUser);
     req.user = { email: createdUser.email };
-    res.json({ msj: "Usuario registrado exitosamente." });
     next();
   } catch (error) {
     console.log("Error:", error);
@@ -77,12 +76,13 @@ const googleLogin = (req, res) => {
     expiresIn: "7d",
   });
   // console.log(req.user);
-  res.status(200).cookie("access-token", token, {
-    httpOnly: true,
-    sameSite: "none",
-  });
-
-  res.redirect("http://localhost:5173/home");
+  res
+    .status(200)
+    .cookie("access-token", token, {
+      httpOnly: true,
+      sameSite: "lax",
+    })
+    .redirect("http://localhost:5173/home");
 };
 
 module.exports = {

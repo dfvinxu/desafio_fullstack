@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 
 const Login = () => {
@@ -7,6 +7,8 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,13 +32,16 @@ const Login = () => {
 
       if (response.ok){
         setIsLoggedIn(true);
+        navigate('/home');
+
       } else {
-        alert('Email o contraseña no coincide')
+        setError('Email o contraseña no coincide')
       }
     } catch(error){
       console.error('Error')
     }
   }
+
 
   return (
     <>
@@ -60,6 +65,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
+          {error && <p className="error-message">{error}</p>}{setError}
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>
