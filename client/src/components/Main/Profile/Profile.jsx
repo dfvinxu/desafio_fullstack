@@ -9,7 +9,9 @@ import Forward from "../../../../public/figma_svg/go-forward.svg"
 const Profile = () => {
   return (
     <section className="profile-container">
-      <Close />
+      <span className="close-icon">
+        <Close />
+      </span>
       <section className="profile-header">
         <img
           className="profile-picture"
@@ -21,6 +23,7 @@ const Profile = () => {
           <p className="profile-email">andrea@gmail.com</p>
         </article>
       </section>
+      <section className="user-options">
       <section className="profile-options">
         <article className="option">
           <span className="option-section">
@@ -50,9 +53,11 @@ const Profile = () => {
           <Language /> Español 
         </span> <Forward className="next-icon" />
       </section>
-      <button className="logout-btn">Cerrar sesión</button>
+      </section>
       {/* Footer */}
       <footer className="profile-footer">
+        
+        <button className="logout-btn">Cerrar sesión</button>
         <p>Política y privacidad</p>
         <article className="collab">
             <img

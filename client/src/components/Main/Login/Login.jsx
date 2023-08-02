@@ -50,7 +50,7 @@ const Login = () => {
 
   return (
     <>
-      <BackButton />
+      <BackButton link={"/"}/>
       <section className="form">
         <h2 className="title-login">Bienvenido de nuevo!</h2>
         <form onSubmit={handleSubmit}>
