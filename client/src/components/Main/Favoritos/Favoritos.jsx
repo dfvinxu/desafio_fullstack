@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { v4 as uuidv4 } from 'uuid';
 
 const Favoritos = () => {
   const [favoriteEvents, setFavoriteEvents] = useState([]);
@@ -7,12 +8,13 @@ const Favoritos = () => {
   useEffect(() => {
     const fetchFavoriteEvents = async () => {
       try {
-        const userId = Cookies.get("userId");
+        const userId = Cookies.get("user-id");
         const response = await fetch(`/api/favorites/eventos/${userId}`);
         if (response.ok) {
           const data = await response.json();
           console.log(data)
-          setFavoriteEvents(data);
+          setFavoriteEvents(data.data);
+          console.log(favoriteEvents);
         } else {
           console.log('Error al obtener los eventos favoritos');
         }
@@ -25,20 +27,24 @@ const Favoritos = () => {
   }, []);
   
   return (
-    <div>
+    <section>
       <h2>Tus eventos favoritos</h2>
       <ul>
-        { favoriteEvents.map((event, index) => (
-          <li key={index}>
-            <h3>{event.TITULO}</h3>
-            <p>Dirección: {event.DIRECCION}</p>
-            <p>Fecha: {event.FECHA}</p>
-            <p>Hora: {event.HORA}</p>
-          </li>
-        ))}
+        {favoriteEvents.length > 0 ? (
+          favoriteEvents.map((event) => (
+            <li key={uuidv4()}>
+              <h3>{event.TITULO}</h3>
+              <p>Dirección: {event.DIRECCION}</p>
+              <p>Fecha: {event.FECHA}</p>
+              <p>Hora: {event.HORA}</p>
+            </li>
+          ))
+        ) : (
+          <p>No tienes eventos favoritos.</p>
+        )}
       </ul>
-    </div>
+    </section>
   );
-};
+} 
 
 export default Favoritos;

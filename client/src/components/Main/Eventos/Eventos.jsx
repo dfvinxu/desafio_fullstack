@@ -45,7 +45,7 @@ const EventList = () => {
   //FAVORITOS
 
   const handleFavorites = async(event) => {
-    const userId = Cookies.get("userId");
+    const userId = Cookies.get("user-id");
     console.log(userId);
     const formattedDate = event.FECHA.substring(0, 10);
     const eventFavInfo = {
