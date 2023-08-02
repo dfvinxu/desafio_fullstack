@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import Weather from "./Weather/Weather";
 import Profile from "./Profile/Profile";
 import Eventos from "./Eventos/Eventos";
+import Favoritos from './Favoritos/Favoritos'
 
 
 
@@ -34,6 +35,7 @@ const Main = ({ isLoggedIn }) => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/favoritos" element={<Favoritos />} />
         </Routes>
       </LocationContext.Provider>
     </main>

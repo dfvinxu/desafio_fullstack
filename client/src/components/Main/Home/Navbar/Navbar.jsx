@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <section className="navbar">
+    <section className="navbar" >
       <article className="item">
         <GoHome />
         <span>Inicio</span>
@@ -15,7 +15,7 @@ const Navbar = () => {
         <LuPartyPopper />
         <span>Eventos</span>
       </article>
-      <article className="item">
+      <article className="item" onClick={() => navigate('/favoritos')}>
         <AiOutlineHeart  />
         <span>Favoritos</span>
       </article>

@@ -5,11 +5,11 @@ import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
 import Cookies from 'js-cookie';
-// import { AuthContext } from "../../C";
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [favoriteEvents, setFavoriteEvents] = useState(false);
 
   useEffect(() => {
     // Fetch data from the API
@@ -44,30 +44,34 @@ const EventList = () => {
 
   //FAVORITOS
 
-  const handleFavorites = async(event, userId) => {
-    event.preventDefault();
-
-    const selectedEvent = event;
+  const handleFavorites = async(event) => {
+    const userId = Cookies.get("userId");
+    console.log(userId);
+    const formattedDate = event.FECHA.substring(0, 10);
+    const eventFavInfo = {
+      userId: userId,
+      TITULO: event.TITULO,
+      DIRECCION: event.DIRECCION,
+      FECHA: formattedDate,
+      HORA: event.HORA
+    }
+    console.log("userId:", userId);
+    console.log("eventFavInfo:", eventFavInfo);
     try {
-      const userId = Cookies.get("userId");
-      const response = await fetch("/api/favorites", {
+      const response = await fetch("/api/favorites/eventos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId: userId,
-          TITULO: selectedEvent.TITULO,
-          DIRECCION: selectedEvent.DIRECCION,
-          FECHA: selectedEvent.FECHA,
-          HORA: selectedEvent.HORA,
-        }),
+        body: JSON.stringify(eventFavInfo),
       });
 
-      if (!response.ok) {
-        throw new Error("Error al agregar el evento a favoritos");
+      if (response.ok) {
+        setFavoriteEvents(true);
+        console.log('Guardado correctamente!');
+      } else {
+        console.log('No se ha guardado');
       }
-
       const data = await response.json();
       console.log(data.message);
     } catch (error) {
@@ -107,7 +111,7 @@ const EventList = () => {
                 <p>Hora: {event.HORA}</p>
               </article>
               <div className="event-icons">
-                <AiOutlineHeart size={20} color="#4B8BFF" onClick={handleFavorites}/>
+                <AiOutlineHeart size={20} color="#4B8BFF" onClick={() => handleFavorites(event)}/>
               </div>
             </div>
           ))

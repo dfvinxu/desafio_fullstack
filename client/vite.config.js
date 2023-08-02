@@ -14,6 +14,9 @@ export default defineConfig({
       "/api/museos": "http://localhost:3000",
       "/api/parks": "http://localhost:3000",
       "/api/oficinas-turismo": "http://localhost:3000",
+      "/api/favorites": "http://localhost:3000",
+      "/api/favorites/eventos": "http://localhost:3000",
+      "/api/favorites/eventos/userId?": "http://localhost:3000"
     },
   },
 });

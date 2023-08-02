@@ -13,11 +13,12 @@ function App() {
     setIsLoggedIn(isLoggedIn);
   };
 
+
   
   useEffect(() => {
     const token = Cookies.get("access-token");
-    const userId = Cookies.get("userId");
-    if (token) {
+    const userId = Cookies.get("user-id");
+    if (token && userId) {
       setIsLoggedIn(true); 
     }
   }, []);
