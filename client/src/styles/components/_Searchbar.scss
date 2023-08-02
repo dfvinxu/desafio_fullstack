@@ -1,5 +1,28 @@
 .search-bar{
+    position: relative;
     input{
         @include input
     }
+    .icon{
+        @include icon
+    }
+
+    .options{
+        position: relative;   
+        ul{
+            position: absolute;
+            left: 0;
+            z-index: 999999;
+            list-style: none;
+            min-width: 100%;
+        }
+        .search-item{
+            padding: 20px;
+            background-color: $color-white;
+            &:hover{
+                background-color: $color-neutral-light;
+            }
+        }
+    }
 }
+

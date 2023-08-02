@@ -36,7 +36,7 @@
 
 @mixin input {
     width: 100%;
-    padding: 20px 10px;
+    padding: 20px 15px;
     border-radius: 8px;
     color: $color-neutral-regular;
     border: 2px solid $color-primary-x-light;
@@ -47,4 +47,14 @@
     padding: 20px;
     border-radius: 8px;
     border: 1px solid transparent;
+}
+
+@mixin icon{
+    position: absolute;
+    font-size: 25px;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    color: $color-neutral-regular;
 }

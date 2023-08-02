@@ -8,7 +8,7 @@ const EnterOptions = () => {
         <div className="separator"></div>
       </article>
       <article className="register-options">
-        <a href="/auth/google" className="register-option">
+        <a href="/auth/google/" className="register-option">
           <img src="./svg/google-icon.svg" alt="Logo de Google" />
         </a>
       </article>
