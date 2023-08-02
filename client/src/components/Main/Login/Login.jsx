@@ -1,15 +1,17 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
-import { AuthContext } from '../../../context/authContext';
+import { AuthContext } from "../../../context/authContext";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,32 +19,34 @@ const Login = () => {
     const userData = {
       email,
       password,
-    }
+    };
 
     try {
-      const response = await fetch('/auth/login', {
-        method: 'POST',
+      const response = await fetch("/auth/login", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-
         },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
       });
 
       console.log(response);
 
-      if (response.ok){
+      if (response.ok) {
         setIsLoggedIn(true);
-        navigate('/home');
-
+        navigate("/home");
       } else {
-        setError('Email o contraseña no coincide')
+        setError("Email o contraseña no coincide");
       }
-    } catch(error){
-      console.error('Error')
+    } catch (error) {
+      console.error("Error");
     }
-  }
+  };
 
+  // password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
 
   return (
     <>
@@ -51,21 +55,36 @@ const Login = () => {
         <h2 className="title-login">Bienvenido de nuevo!</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">
-            <input type="text"
-             id="email" 
-             placeholder="Introduce tu email" 
-             value={email}  
-             onChange={(e) => setEmail(e.target.value)}/>
-          </label>
-          <label htmlFor="password">
             <input
-              type="password"
+              type="text"
+              id="email"
+              placeholder="Introduce tu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+          <label htmlFor="password" className="password-input-container">
+            <input
+              type={showPassword ? "text" : "password"}
               id="password"
               value={password}
               placeholder="Introduce tu contraseña"
               onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
             />
+            {showPassword ? (
+              <AiOutlineEyeInvisible
+                onClick={togglePasswordVisibility}
+                className="eye-icon"
+              />
+            ) : (
+              <AiOutlineEye
+                onClick={togglePasswordVisibility}
+                className="eye-icon"
+              />
+            )}
           </label>
+          {error && <p className="error-message">{error}</p>}
           {error && <p className="error-message">{error}</p>}
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
