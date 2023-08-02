@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {AiOutlineHeart} from "react-icons/ai"
 const Slider = ({markers}) => {
   const sliderRef = useRef(null)
@@ -10,7 +10,6 @@ const Slider = ({markers}) => {
     const handleMove = e => {
       let height = e.view.innerHeight
       let newHeight = height - Math.floor(e.targetTouches[0].clientY)
-      console.log(newHeight)
       if(newHeight < 105 || newHeight > 825) return
       setHeight(newHeight)
     }
