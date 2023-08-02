@@ -28,8 +28,8 @@ const Slider = ({markers}) => {
         <h2 className="title">Titulo</h2>
         <section className="markers-around">
         {markers && markers.map((ele, i) => (
-          <article className="marker">
-            <section className="marker-image-container" key={i}>
+          <article className="marker" key={i}>
+            <section className="marker-image-container" >
               <AiOutlineHeart className="icon-like"/>
               <img src="./image/fuente.jpeg" alt="fuente de agua" className="marker-image"/>
             </section>
