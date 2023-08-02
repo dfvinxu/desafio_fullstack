@@ -4,7 +4,6 @@ import "./styles/styles.scss";
 import { AuthContext } from "./context/authContext";
 import { useState, useEffect } from "react";
 import Cookies from 'js-cookie';
-import jwt_decode from "jwt-decode"
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
