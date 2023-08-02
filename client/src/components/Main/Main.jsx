@@ -6,6 +6,8 @@ import Register from "./Register";
 import Welcome from "./Welcome/Welcome";
 import Home from "./Home/Home";
 import Weather from "./Weather/Weather";
+import Profile from "./Profile/Profile";
+import Eventos from "./Eventos/Eventos";
 const Main = () => {
   const [locations, setLocations] = useState([]);
   const updateLocations = (newLocation) =>
@@ -23,6 +25,8 @@ const Main = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/eventos" element={<Eventos />} />
           <Route path="/weather" element={<Weather />} />
         </Routes>
       </LocationContext.Provider>

@@ -6,14 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/auth/signup": "http://localhost:3000",
-      "/auth/login": "http://localhost:3000",
-      "/auth/google": "http://localhost:3000",
-      "/auth/google/callback": "http://localhost:3000",
-      "/api/fuentes": "http://localhost:3000",
-      "/api/museos": "http://localhost:3000",
-      "/api/parks": "http://localhost:3000",
-      "/api/oficinas-turismo": "http://localhost:3000",
+      "/auth/signup": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/auth/login": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/auth/google": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/auth/google/callback": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/api": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/api/fuentes": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/api/museos": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/api/parks": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
+      "/api/oficinas-turismo": "https://dcwqpn8sih.eu-west-1.awsapprunner.com/",
     },
   },
 });
