@@ -47,18 +47,23 @@ const checkEmailLogIn = async (req, res, next) => {
       console.log("Incorrect password");
       return res.status(401).json({ msj: "Incorrect password" });
     } else {
-      const token = jwt.sign({ userId: user.id }, jwtSecret, {
-        expiresIn: "300h",
+      const token = jwt.sign({ userId: user.userId }, "secret_password" , {
+        expiresIn: "7d",
+        
       });
-      res.cookie("access-token", token, {
-        httpOnly: true,
-        sameSite: "lax",
-      });
-      res.status(200).json({ user: user, token: token });
+      console.log(token)
+      res.status(200).cookie("access-token", token, {
+        
+      }).send('todo ok');
+      // res.cookie("user-id", user.userId, {
+      //   httpOnly: true,
+      //   sameSite: "lax"
+      // });
+      // res.status(200).send('Todo ok')
     }
   } catch (err) {
     console.log(err);
-    res.status(500).json({ msj: " Error" });
+    res.status(500).cookie({ msj: " Error" });
   }
 };
 
