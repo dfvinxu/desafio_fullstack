@@ -35,7 +35,7 @@ app.use(helmet());
 app.use("/api", router);
 
 // Rutas User
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 // Errores
 app.use(error404);
 

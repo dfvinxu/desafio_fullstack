@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {GoogleMap} from "@react-google-maps/api"
 import Pointers from "./Pointers"
 import { getCenter, getMarkers } from "../../../../../utils/script";
