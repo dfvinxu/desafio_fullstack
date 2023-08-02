@@ -109,6 +109,8 @@ jobs:
       - name: Deploy client to App Runner
         id: deploy-apprunner-client
         uses: awslabs/amazon-app-runner-deploy@main
+        env:
+          VITE_GOOGLE_API: ${{ secrets.VITE_GOOGLE_API }}
         with:
           service: app-runner-desafio-client
           image: ${{ steps.build-client-image.outputs.image }}
@@ -118,6 +120,8 @@ jobs:
           cpu: 1
           memory: 2
           port: 5173
+          copy-env-vars: |
+            VITE_GOOGLE_API
 
       - name: Client App Runner output
         run: echo "App runner output ${{ steps.deploy-apprunner-client.outputs.service-id }}"
