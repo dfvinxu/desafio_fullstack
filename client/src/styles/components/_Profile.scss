@@ -1,59 +1,93 @@
 .profile-container {
+  margin-top: 20px;
   display: flex;
+  flex-grow: 1;
+  width: 100%;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  gap: 22px;
 
+  & svg{
+    width: 24px;
+    height: 24px;
+  }
+
+  .close-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+    padding: 8px;
+  }
+  .active{
+    background-color: $color-primary-regular;
+    border-radius: 8px;
+    svg path{
+      stroke: $color-white;
+    }
+  }
   .profile-header {
+    align-self: self-start;
     display: flex;
     align-items: center;
-    margin-bottom: 5%;
-    border-bottom: 2px solid $color-neutral-x-dark;
+    gap: 25px;
+    color: $color-neutral-dark;
+    .profile-picture {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid $color-primary-regular;
+    }
+    .profile-name{
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .profile-email{
+      font-size: 16px;
+      font-weight: 400;
+    }
   }
-  .close-icon {
-    margin-bottom: 5%;
-    margin-left: 70%;
-    font-size: 400%;
-    border: 5px solid $color-white;
-  }
-  .profile-picture {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 2px solid #4b8bff;
-  }
-  h1 {
-    margin-left: 10%;
-  }
-  .profile-sections {
+  .user-options{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-    margin-top: 20px;
-
-    .next-icon {
-      float: right;
+    width: 114%;
+    padding: 15px 20px;
+    gap: 16px;
+    .text{
+      font-weight: 400;
+      font-size: 16px;
+      color: $color-neutral-x-dark;
     }
-
-    .section {
-      padding: 15px;
-      width: 200%;
-
-      h2 {
-        margin: 0;
-        padding-bottom: 10px;
-      }
-
-      .favorites-subsection {
-        padding: 10px;
-
-        margin: 0;
+    .profile-options {
+      display: flex;
+      flex-direction: column;
+      padding: 15px 0px;
+      gap: 21px;
+      border-top: 1px solid $color-neutral-light;
+      border-bottom: 1px solid $color-neutral-light;
+      .option{
+        display: flex;
+        justify-content: center;
         align-items: center;
-
-        h2 {
-          padding-bottom: 10px;
+        .option-section{
+          display: flex;
+          gap: 16px;
+          align-items: center;
+          justify-content: flex-start;
+          flex-grow: 1;
         }
+      }
+    }
+  
+    .profile-language{
+      display: flex;
+      width: 100%;
+      .option-section{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-grow: 1;
       }
     }
   }
@@ -64,45 +98,45 @@
     height: 56px;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
     border-radius: 8px;
-    border: 1px solid #4b8bff;
-    background: var($color-white, #fff);
-    color: $color-base-gray-dark;
-    font-size: $font-size-3;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 70px;
+    border: 1px solid $color-primary-regular;
+    background-color: $color-white;
+    color: $color-primary-regular;
+    font-weight: 600;
+    font-size: 15px;
+    
   }
 
   /* Footer styles */
   .profile-footer {
+    flex-grow: 1;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px 0px;
     align-items: center;
     background-color: $color-white;
-    padding: 10px;
+    gap: 38px;
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-neutral-dark;
 
-    .left-content {
+    .footer-info{
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 10px;
-
-      .community-flag {
-        width: 70px;
-        height: auto;
-      }
-
-      p {
-        margin: 0;
-      }
-    }
-
-    .center-content {
-      p {
-        margin: 0;
+      gap: 11px;
+      .collab{
+        display: flex;
+        width: 65%;
+        gap: 8px;
+        .community-flag {
+          width: 48px;
+          height: auto;
+        }
       }
     }
+
   }
 }

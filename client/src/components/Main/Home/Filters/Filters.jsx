@@ -1,40 +1,47 @@
 import { useNavigate } from "react-router-dom";
-import {TbFountain} from "react-icons/tb"
-import {PiTree} from "react-icons/pi"
-import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
-import {GiGreekTemple} from "react-icons/gi"
+import Fuente from "../../../../../public/figma_svg/fuentes-black.svg"
+import Arbol from "../../../../../public/figma_svg/tree-black.svg"
+import Temperatura from "../../../../../public/figma_svg/temperature-black.svg"
+import InterestPoints from "../../../../../public/figma_svg/interest-points-black.svg"
+import MedKit from "../../../../../public/figma_svg/med-black.svg"
+import Location from "../../../../../public/figma_svg/location.svg"
+
+
 import { getMarkers } from "../../../../../utils/script";
 
-const Filters = ({updateMarkers, center, updateTipo}) => {
+const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {
   const navigate = useNavigate();
   return(
     <section className="filters">
-      <article onClick={() => {
+      <article className="active" onClick={() => {
         getMarkers({center, tipo: "fuentes"}).then(res => updateMarkers(res))
         updateTipo("fuentes")
       }}>
-        <TbFountain />
+        <Fuente />
       </article>
       <article onClick={() => {
         getMarkers({center, tipo: "parques"}).then(res => updateMarkers(res))
         updateTipo("parques")
       }}>
-        <PiTree />
+        <Arbol />
       </article>
       <article>
-        <FaTemperatureFull onClick={() => navigate('/weather')} />
+        <Temperatura />
       </article>
       <article onClick={() => {
         getMarkers({center, tipo: "museos"}).then(res => updateMarkers(res))
         updateTipo("museos")
       }}>
-        <GiGreekTemple />
+        <InterestPoints />
       </article>
       <article onClick={() => {
         getMarkers({center, tipo: "salud"}).then(res => updateMarkers(res))
         updateTipo("salud")
       }}>
-        <FaKitMedical />
+        <MedKit/>
+      </article>
+      <article onClick={moveToCenter}>
+        <Location />
       </article>
     </section>
   );

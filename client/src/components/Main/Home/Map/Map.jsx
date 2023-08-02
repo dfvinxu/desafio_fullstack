@@ -3,7 +3,7 @@ import {GoogleMap} from "@react-google-maps/api"
 import Pointers from "./Pointers"
 import { getCenter, getMarkers } from "../../../../../utils/script";
 
-const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
+const Map = ({markers, updateMarkers, updateCoords, coords, tipo, userCenter}) => {
   const mapRef = useRef(null)
   const [map, setMap] = useState(null)
   const handleTileLoad = () => {
@@ -23,7 +23,7 @@ const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
         mapId: "cce25c7cd1c6e94e",
         maxZoom: 17,
         minZoom: 15,
-        center: coords,
+        center: userCenter,
       }} 
         onTilesLoaded={handleTileLoad}
         onLoad={(map) => setMap(map)}
