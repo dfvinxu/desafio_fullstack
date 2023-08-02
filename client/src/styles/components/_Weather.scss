@@ -1,135 +1,164 @@
 @import "../utils/mixins.scss";
 @import "../utils/_variables.scss";
 
-*{
-    font-family: $font-families-urbanist;
+* {
+  font-family: $font-families-urbanist;
 }
 
-.temp-container{
-    width: 100%;
-    height: 100%;
-    margin-top: 3rem;
+.temp-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 3rem;
+  position: relative;
+  margin-top: 3rem;
 }
 
-.temp-title{
-    font-size: 2rem;
+.temp-title {
+  font-size: 2rem;
 }
 
-.day-temp{
-    display: flex;
-    justify-content:left;
-    flex-direction:row;
-    margin-top: 2.5rem;
-    align-items: center;
+.day-temp {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  margin-top: 2.5rem;
+  align-items: center;
 }
 
 .day-temp p {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-.date-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-transform: capitalize;
+.date-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: capitalize;
 }
 
-.date-container p:nth-child(2){
-    font-size: 2rem;
-    color: $color-primary-regular;
-    font-weight: bold;
+.date-container p:nth-child(2) {
+  font-size: 2rem;
+  color: $color-primary-regular;
+  font-weight: bold;
 }
 
-.hour-container{
-    font-size: 2rem;
-    color: $color-primary-regular;
-    border-left: solid 1px $color-primary-regular;
-    font-weight: bold;
+.hour-container {
+  font-size: 2rem;
+  color: $color-primary-regular;
+  border-left: solid 1px $color-primary-regular;
+  font-weight: bold;
 }
 
-.curr-temp{
-    font-size: 3rem;
-    display: flex;
-    flex-direction: row;
-    color: $color-base-red;
-    font-size: bold;
-    
+.curr-temp {
+  font-size: 3rem;
+  display: flex;
+  flex-direction: row;
+  color: $color-base-red;
+  font-size: bold;
 }
 
-.curr-des{
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.curr-des {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .curr-des p {
-    color: black;
+  color: black;
 }
 
-.hour-temp{
-    margin-top: 2.5rem;
-    color: $color-primary-regular;
-    font-weight: bold;
+.hour-temp {
+  margin-top: 2.5rem;
+  color: $color-primary-regular;
+  font-weight: bold;
 }
 
-.hour-list{
-    list-style: none;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    flex-direction: row;
+.hour-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
 }
 
-
-.hour-item{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.hour-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .next-temp {
-    border-top: 1px solid $color-primary-regular;
-    margin-top: 2rem;
-    padding-top: 2rem;
+  border-top: 1px solid $color-primary-regular;
+  margin-top: 2rem;
+  padding-top: 2rem;
 }
 
-.next-temp h3{
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+.next-temp h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.sun-icon{
-    height: 32px;
-    width: 32px;
+.sun-icon {
+  height: 32px;
+  width: 32px;
 }
 
-.luna-icon{
-    height: 25px;
-    width: 25px;
+.luna-icon {
+  height: 25px;
+  width: 25px;
 }
 
-.days-temp{
-    color: $color-primary-regular;
-    font-weight: bold;
+.days-temp {
+  color: $color-primary-regular;
+  font-weight: bold;
 }
 .weather-table {
-    width: 90%;
-    border-collapse: collapse;
+  width: 90%;
+  border-collapse: collapse;
 }
-  
+
 .weather-table th,
 .weather-table td {
-    padding: 8px;
-    text-align: left;
-    text-transform: capitalize;
+  padding: 8px;
+  text-align: left;
+  text-transform: capitalize;
+}
+.go-back {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
 }
 
- 
-  
+.go-back-icon {
+  font-size: 24px;
+  color: $color-primary-regular;
+}
+.temp-title {
+  margin-bottom: 50px;
+  margin-left: 40px;
+}
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .temp-title {
+    margin-left: 20px;
+  }
+}
 
+@media (min-width: 1025px) {
+  .temp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .temp-title {
+    margin-left: 0;
+    margin-right: 40px;
+  }
+}

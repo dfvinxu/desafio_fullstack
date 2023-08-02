@@ -3,11 +3,14 @@ import axios from "axios";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
-import { es } from "date-fns/locale"; //  Spanish locale
+import { es } from "date-fns/locale";
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom"; //  Spanish locale
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from the API
@@ -38,10 +41,16 @@ const EventList = () => {
   const filteredEvents = events.filter((event) => {
     return event.TITULO.toLowerCase().includes(searchTerm.toLowerCase());
   });
+  const handleGoBack = () => {
+    navigate("/home");
+  };
 
   return (
     <article>
       <header>
+        <div className="go-back-container" onClick={handleGoBack}>
+          <IoIosArrowBack className="go-back-icon" />
+        </div>
         <div className="search-bar-container">
           <input
             type="text"
