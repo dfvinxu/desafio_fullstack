@@ -5,6 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
 import Cookies from 'js-cookie';
+import jwt_decode from "jwt-decode"; 
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -44,39 +45,49 @@ const EventList = () => {
 
   //FAVORITOS
 
+  
   const handleFavorites = async(event) => {
-    const userId = Cookies.get("user-id");
-    console.log(userId);
-    const formattedDate = event.FECHA.substring(0, 10);
-    const eventFavInfo = {
-      userId: userId,
-      TITULO: event.TITULO,
-      DIRECCION: event.DIRECCION,
-      FECHA: formattedDate,
-      HORA: event.HORA
+    try{
+      const token = Cookies.get("access-token"); 
+      console.log(token)
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.userId;
+      console.log(userId)
+    } catch(error){
+      console.log(error)
     }
-    console.log("userId:", userId);
-    console.log("eventFavInfo:", eventFavInfo);
-    try {
-      const response = await fetch("/api/favorites/eventos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(eventFavInfo),
-      });
+   
 
-      if (response.ok) {
-        setFavoriteEvents(true);
-        console.log('Guardado correctamente!');
-      } else {
-        console.log('No se ha guardado');
-      }
-      const data = await response.json();
-      console.log(data.message);
-    } catch (error) {
-      console.error("Error al agregar el evento a favoritos:", error);
-    }
+    // const formattedDate = event.FECHA.split("T")[0];
+    // const eventFavInfo = {
+    //   userId: userId,
+    //   TITULO: event.TITULO,
+    //   DIRECCION: event.DIRECCION,
+    //   FECHA: formattedDate,
+    //   HORA: event.HORA
+    // }
+    // console.log("userId:", userId);
+    // console.log("eventFavInfo:", eventFavInfo);
+    // try {
+  //     const response = await fetch("/api/favorites/eventos", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(eventFavInfo),
+  //     });
+
+  //     if (response.ok) {
+  //       setFavoriteEvents(true);
+  //       console.log('Guardado correctamente!');
+  //     } else {
+  //       console.log('No se ha guardado');
+  //     }
+  //     const data = await response.json();
+  //     console.log(data.message);
+  //   } catch (error) {
+  //     console.error("Error al agregar el evento a favoritos:", error);
+  //   }
   }
 
   return (
