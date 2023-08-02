@@ -34,7 +34,14 @@ const Login = () => {
 
       if (response.ok) {
         setIsLoggedIn(true);
-        navigate("/home");
+
+        // Redirect to IntermediatePage
+        navigate("/intermediate");
+
+        // After 3 seconds, redirect to /home
+        setTimeout(() => {
+          navigate("/home");
+        }, 300);
       } else {
         setError("Email o contraseña no coincide");
       }
@@ -89,7 +96,9 @@ const Login = () => {
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>
-          <button>Iniciar sesión</button>
+          <button className="login-button2 custom-button">
+            Iniciar sesión
+          </button>
         </form>
       </section>
       <span className="register-link">
