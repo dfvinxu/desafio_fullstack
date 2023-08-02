@@ -27,45 +27,47 @@ const Profile = () => {
       <section className="profile-options">
         <article className="option">
           <span className="option-section">
-            <ProfileIcon /> Mi perfil 
+            <ProfileIcon /> <p className="text">Mi perfil</p> 
           </span>
           <Forward className="next-icon" />
         </article>
         <article className="option">
           <span className="option-section">
-            <ProfileSettings /> Ajustes 
+            <ProfileSettings /><p className="text">Ajustes</p> 
           </span>
           <Forward className="next-icon" />
         </article>
         <article className="option">
         <span className="option-section">
-            <Faq /> FAQs 
+            <Faq /> <p className="text">FAQs</p> 
           </span> <Forward className="next-icon" />
         </article>
         <article className="option">
         <span className="option-section">
-            <Messages /> Mensajes 
+            <Messages /> <p className="text">Mensajes</p> 
           </span> <Forward className="next-icon" />
         </article>
       </section>
       <section className="profile-language">
         <span className="option-section">
-          <Language /> Español 
+          <Language /> <p className="text">Español</p> 
         </span> <Forward className="next-icon" />
       </section>
       </section>
       {/* Footer */}
       <footer className="profile-footer">
-        
+
         <button className="logout-btn">Cerrar sesión</button>
-        <p>Política y privacidad</p>
-        <article className="collab">
-            <img
-            className="community-flag"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_the_Community_of_Madrid.svg/800px-Flag_of_the_Community_of_Madrid.svg.png"
-            alt="Community of Madrid Flag"
-          />
-            <p>Colaboración especial con la Comunidad de Madrid</p>
+        <article className="footer-info"> 
+          <p>Política y privacidad</p>
+          <article className="collab">
+              <img
+              className="community-flag"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Flag_of_the_Community_of_Madrid.svg/800px-Flag_of_the_Community_of_Madrid.svg.png"
+              alt="Community of Madrid Flag"
+            />
+              <p>Colaboración especial con la Comunidad de Madrid</p>
+            </article>
           </article>
       </footer>
     </section>
