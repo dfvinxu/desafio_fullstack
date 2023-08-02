@@ -1,21 +1,50 @@
 @import "../utils/mixins.scss";
 
-.title-login{
-    font-size: 1.8rem;
-    width: 70%;
+.title-login {
+  font-size: 1.8rem;
+  width: 70%;
 }
 
-.form{
-    @include form
+.form {
+  @include form;
 }
 
-.register-link{
-    text-align: center;
-    a{
-        display: inline;
-        color: $color-primary-regular;
-        text-decoration: none;
-        font-weight: 700;
-    }
+.register-link {
+  text-align: center;
+  a {
+    display: inline;
+    color: $color-primary-regular;
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
 
+/* Eye icon */
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: $color-primary-regular;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+.password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center; /* Add this to vertically center the icon */
+  margin-bottom: 10px; /* Add some margin for spacing */
+}
+
+input[type="password"] {
+  width: 100%;
+  padding-right: 30px;
 }

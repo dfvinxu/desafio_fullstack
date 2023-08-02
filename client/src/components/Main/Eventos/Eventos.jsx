@@ -3,8 +3,10 @@ import axios from "axios";
 import { AiOutlineHeart, AiOutlineLink } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
-import { es } from "date-fns/locale"; //  Spanish locale
-import BackButton from "../BackButton"
+import { es } from "date-fns/locale";
+import { IoIosArrowBack } from "react-icons/io";
+//  Spanish locale
+import BackButton from "../BackButton";
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,22 +41,21 @@ const EventList = () => {
     return event.TITULO.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-  console.log(events)
   return (
     <section className="events">
       <article className="search-bar-container">
-        <BackButton />
-          <article className="search-bar">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Buscar..."
-            />
-            <BsSearch className="icon"/>
-          </article>
+        <BackButton link={"/home"} />
+        <article className="search-bar">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Buscar..."
+          />
+          <BsSearch className="icon" />
+        </article>
       </article>
-      <h1>Eventos</h1>  
+      <h1>Eventos</h1>
       <section className="event-frame">
         {filteredEvents.length === 0 ? (
           <p>No events found.</p>
@@ -68,16 +69,20 @@ const EventList = () => {
               />
               <section className="event-info">
                 <article className="event-details">
-                    <p className="event-date">{formatDate(event.FECHA)}</p>
-                    <h2 className="event-title">{event.TITULO}</h2>
-                    <p className="event-address">{event.DIRECCION}</p>
-                  </article>
-                  <section className="event-icons">
-                    <AiOutlineHeart className="event-icon"/>
-                    <a href={`${event["CONTENT-URL"]}`} target="_blank" rel="noreferrer">
-                      <AiOutlineLink />
-                    </a>
-                  </section>
+                  <p className="event-date">{formatDate(event.FECHA)}</p>
+                  <h2 className="event-title">{event.TITULO}</h2>
+                  <p className="event-address">{event.DIRECCION}</p>
+                </article>
+                <section className="event-icons">
+                  <AiOutlineHeart className="event-icon" />
+                  <a
+                    href={`${event["CONTENT-URL"]}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <AiOutlineLink />
+                  </a>
+                </section>
               </section>
             </article>
           ))

@@ -1,27 +1,57 @@
 @import "../utils/mixins.scss";
 @import "../utils/_variables.scss";
 
-.title-register{
-    font-size: 2rem;
+.title-register {
+  font-size: 2rem;
 }
 
-.form-register{
-    @include form;
-    select {
-        width: 100%;
-        padding: 20px 10px;
-        option{
-            width: 100%;
-            padding: 20px 10px;
-        }
+.form-register {
+  @include form;
+  select {
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  option {
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  input[type="password"] {
+    width: 100%;
+    padding-right: 30px;
+  }
+
+  /* Eye icon */
+  .eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: $color-primary-regular;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-primary-dark;
     }
+  }
 }
 
-
-.login-link{
-    text-align: center;
-    a{
-        color: $color-primary-regular;
-        text-decoration: none;
-    }
+.login-link {
+  text-align: center;
+  a {
+    color: $color-primary-regular;
+    text-decoration: none;
+  }
 }
