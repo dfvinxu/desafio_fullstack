@@ -28,9 +28,19 @@ const Slider = ({markers}) => {
         <h2 className="title">Titulo</h2>
         <section className="markers-around">
         {markers && markers.map((ele, i) => (
-          <article className="marker" key={i}>
-            <AiOutlineHeart className="icon-like"/>
-            <img src="./image/fuente.jpeg" alt="fuente de agua" className="marker-image"/>
+          <article className="marker">
+            <section className="marker-image-container" key={i}>
+              <AiOutlineHeart className="icon-like"/>
+              <img src="./image/fuente.jpeg" alt="fuente de agua" className="marker-image"/>
+            </section>
+            <p className="marker-title">{ele["DIRECCION"].toLowerCase()}</p>
+            <section className="marker-directions">
+              <article className="marker-distance">
+                <img src="./figma_svg/marker.svg" alt="marker icon" />
+                <span>distancia</span>
+              </article>
+              <img src="./figma_svg/path.svg" alt="pathto icon" />
+            </section>
           </article>
           ))}
         </section>

@@ -7,6 +7,7 @@
     height: 105px;
     background-color: $color-white;
     padding: 20px;
+    border-radius: 20px 20px 0px 0px;
     .close-markers{
         position: relative;
         display: flex;
@@ -16,8 +17,9 @@
         gap: 20px;
         .slider-handle{
             position: relative;
-            margin-top: -10px;
+            margin-top: -15px;
             width: 50px;
+            padding: 3px;
             height: 5px;
             background-color: $color-neutral-light;
             cursor: pointer;
@@ -31,6 +33,9 @@
             gap: 20px;
             overflow-x: scroll;
             width: 100%;
+            &::-webkit-scrollbar{
+                width: 0;
+            }
             .marker{
                 position: relative;
                 min-height: 112px;
@@ -50,6 +55,18 @@
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
+                }
+                .marker-title{
+                    text-transform: capitalize;
+                    max-width: 20ch;
+                }
+                .marker-directions{
+                    display: flex; 
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .marker-distance{
+                    display: flex;
                 }
             }
         }
