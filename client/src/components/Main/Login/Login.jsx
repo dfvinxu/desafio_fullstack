@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import { AuthContext } from '../../../context/authContext';
+import Cookies from 'js-cookie';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { setAuthCookie } = useContext(AuthContext);
   const navigate = useNavigate();
+  const {updateCookie} = useContext(AuthContext)
   const [error, setError] = useState('');
 
   const handleSubmit = async (event) => {
@@ -24,13 +25,12 @@ const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
+        withCredentials: true,
         body: JSON.stringify(userData)
       });
 
-      console.log(response);
-
-      if (response.ok) {
-        setAuthCookie('your-access-token', true); // Cambiar 'your-access-token' por el token recibido del servidor si lo tienes
+      if (response.ok) {// Cambiar 'your-access-token' por el token recibido del servidor si lo tienes
+        updateCookie(Cookies.get("access-token"))
         navigate('/home');
       } else {
         setError('Email o contraseña no coincide');

@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
 // SIGNUP
-const signUpUser = async (req, res, next) => {
+const signUpUser = async (req, res) => {
   try {
     const { user, name, surname, email, password, nationality, birth_date } =
       req.body;
@@ -21,8 +21,7 @@ const signUpUser = async (req, res, next) => {
       birth_date,
     };
     const createdUser = await User.create(newUser);
-    req.user = { email: createdUser.email };
-    next();
+    res.status(200).json({ userId: createdUser });
   } catch (error) {
     console.log("Error:", error);
     res.status(500).json({ msj: "Error en el registro" });
@@ -30,7 +29,7 @@ const signUpUser = async (req, res, next) => {
 };
 
 //LOGIN
-const checkEmailLogIn = async (req, res, next) => {
+const checkEmailLogIn = async (req, res) => {
   let { email, password } = req.body;
   try {
     // Buscar el usuario por correo electrónico en la base de datos
@@ -46,21 +45,19 @@ const checkEmailLogIn = async (req, res, next) => {
     if (!passwordCompare) {
       console.log("Incorrect password");
       return res.status(401).json({ msj: "Incorrect password" });
-    } else {
-      const token = jwt.sign({ userId: user.userId }, "secret_password" , {
-        expiresIn: "7d",
-        
-      });
-      console.log(token)
-      res.status(200).cookie("access-token", token, {
-        
-      }).send('todo ok');
-      // res.cookie("user-id", user.userId, {
-      //   httpOnly: true,
-      //   sameSite: "lax"
-      // });
-      // res.status(200).send('Todo ok')
     }
+    const payload = {
+      user_id: user.dataValues.userId,
+    };
+    const token = jwt.sign(payload, "secret_password", {
+      expiresIn: "7d",
+    });
+    res
+      .status(200)
+      .cookie("access-token", token, {
+        sameSite: "lax",
+      })
+      .json({ status: 200, message: "OK" });
   } catch (err) {
     console.log(err);
     res.status(500).cookie({ msj: " Error" });

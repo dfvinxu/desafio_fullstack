@@ -64,7 +64,6 @@ const Register = () => {
   const handleSubmit = async(event) => {
     event.preventDefault();
     const isValid = validateForm();
-
     if (isValid) {
     try {
       const response = await fetch('/auth/signup', {
@@ -74,7 +73,7 @@ const Register = () => {
         },
         body: JSON.stringify(formData)
       });
-
+      console.log(response)
       if (response.ok) {
         alert('Usuario registrado');
         navigate('/login');
