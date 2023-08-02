@@ -5,7 +5,7 @@ import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
 import {GiGreekTemple} from "react-icons/gi"
 import { getMarkers } from "../../../../../utils/script";
 
-const Filters = ({updateMarkers, center, updateTipo}) => {
+const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {
   const navigate = useNavigate();
   return(
     <section className="filters">
@@ -35,6 +35,9 @@ const Filters = ({updateMarkers, center, updateTipo}) => {
         updateTipo("salud")
       }}>
         <FaKitMedical />
+      </article>
+      <article className="center" onClick={moveToCenter}>
+        <img src="./figma_svg/location.svg" alt="centrar vista"/>
       </article>
     </section>
   );

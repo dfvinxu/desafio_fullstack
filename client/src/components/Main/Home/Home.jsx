@@ -10,6 +10,10 @@ const libraries = ["places"];
 
 const Home = () => {
   const [markers, setMarkers] = useState([]);
+  const [userCenter, setUserCenter] = useState({
+    lat: 0,
+    lng: 0
+  })
   const [coords, setCoords] = useState({
     lat: 0,
     lng: 0,
@@ -26,6 +30,7 @@ const Home = () => {
         let { coords } = pos;
         let { latitude: lat, longitude: lng } = coords;
         updateCoords({ lat, lng });
+        setUserCenter({lat, lng});
       });
     }
   }, []);
@@ -33,14 +38,16 @@ const Home = () => {
   const updateMarkers = (newMarkers) => setMarkers([...newMarkers]);
   const updateCoords = (newCoords) => setCoords(newCoords);
   const updateTipo = (newTipo) => setTipo(newTipo);
+  const moveToCenter = () => updateCoords(userCenter)
   return (
     <>
       <article className="inputs">
-        {isLoaded ? <SearchBar updateCoords={updateCoords} /> : null}
+        <SearchBar updateCoords={updateCoords} />
         <Filters
           updateMarkers={updateMarkers}
           center={coords}
           updateTipo={updateTipo}
+          moveToCenter={moveToCenter}
         />
       </article>
       <Navbar />
@@ -52,6 +59,7 @@ const Home = () => {
           updateMarkers={updateMarkers}
           coords={coords}
           tipo={tipo}
+          userCenter={userCenter}
         />
       ) : (
         <p>Cargando...</p>
