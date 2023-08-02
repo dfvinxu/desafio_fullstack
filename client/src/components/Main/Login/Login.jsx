@@ -1,13 +1,12 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import { AuthContext } from '../../../context/authContext';
 
 const Login = () => {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isLoggedIn, setIsLoggedIn} = useContext(AuthContext)
+  const { setAuthCookie } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
@@ -17,32 +16,29 @@ const Login = () => {
     const userData = {
       email,
       password,
-    }
+    };
 
     try {
       const response = await fetch('/auth/login', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
-
         },
         body: JSON.stringify(userData)
       });
 
       console.log(response);
 
-      if (response.ok){
-        setIsLoggedIn(true);
+      if (response.ok) {
+        setAuthCookie('your-access-token', true); // Cambiar 'your-access-token' por el token recibido del servidor si lo tienes
         navigate('/home');
-
       } else {
-        setError('Email o contraseña no coincide')
+        setError('Email o contraseña no coincide');
       }
-    } catch(error){
-      console.error('Error')
+    } catch (error) {
+      console.error('Error', error);
     }
-  }
-
+  };
 
   return (
     <>
@@ -52,10 +48,10 @@ const Login = () => {
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">
             <input type="text"
-             id="email" 
-             placeholder="Introduce tu email" 
-             value={email}  
-             onChange={(e) => setEmail(e.target.value)}/>
+              id="email"
+              placeholder="Introduce tu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
           </label>
           <label htmlFor="password">
             <input

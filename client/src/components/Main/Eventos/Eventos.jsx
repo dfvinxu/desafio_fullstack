@@ -4,6 +4,8 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
+import Cookies from 'js-cookie';
+// import { AuthContext } from "../../C";
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -39,6 +41,40 @@ const EventList = () => {
     return event.TITULO.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+
+  //FAVORITOS
+
+  const handleFavorites = async(event, userId) => {
+    event.preventDefault();
+
+    const selectedEvent = event;
+    try {
+      const userId = Cookies.get("userId");
+      const response = await fetch("/api/favorites", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: userId,
+          TITULO: selectedEvent.TITULO,
+          DIRECCION: selectedEvent.DIRECCION,
+          FECHA: selectedEvent.FECHA,
+          HORA: selectedEvent.HORA,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al agregar el evento a favoritos");
+      }
+
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error("Error al agregar el evento a favoritos:", error);
+    }
+  }
+
   return (
     <article>
       <header>
@@ -71,7 +107,7 @@ const EventList = () => {
                 <p>Hora: {event.HORA}</p>
               </article>
               <div className="event-icons">
-                <AiOutlineHeart size={20} color="#4B8BFF" />
+                <AiOutlineHeart size={20} color="#4B8BFF" onClick={handleFavorites}/>
               </div>
             </div>
           ))

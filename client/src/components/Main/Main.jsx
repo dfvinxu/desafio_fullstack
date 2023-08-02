@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { LocationContext } from "../../context/locationContext";
 import Login from "./Login";
 import Register from "./Register";
@@ -8,7 +8,10 @@ import Home from "./Home/Home";
 import Weather from "./Weather/Weather";
 import Profile from "./Profile/Profile";
 import Eventos from "./Eventos/Eventos";
-const Main = () => {
+
+
+
+const Main = ({ isLoggedIn }) => {
   const [locations, setLocations] = useState([]);
   const updateLocations = (newLocation) =>
     setLocations([...locations, newLocation]);
@@ -17,6 +20,9 @@ const Main = () => {
     updateLocations,
   };
   console.log(locations);
+
+ 
+
   return (
     <main>
       <LocationContext.Provider value={data}>
