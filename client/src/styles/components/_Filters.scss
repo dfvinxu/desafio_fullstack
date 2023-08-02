@@ -15,8 +15,9 @@
         padding: 16px;
     }
     .active{
-        color: $color-white;
+        svg path{
+            stroke: $color-white;
+        }
         background-color: $color-primary-regular;
-        border-radius: 50px;
     }
 }
