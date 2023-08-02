@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const mongoose = require("mongoose");
-
 if (process.env.MG_PASSWORD) {
   mongoose
     .connect(

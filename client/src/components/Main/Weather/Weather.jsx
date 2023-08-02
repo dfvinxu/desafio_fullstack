@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const Weather = () => {
   const [temperatureData, setTemperatureData] = useState([]);
   const [currentTemperature, setCurrentTemperature] = useState(null);
@@ -56,10 +56,10 @@ const Weather = () => {
           setCurrentTemperature(currentData.Prediccion_temperatura_Madrid);
 
           const promises = hours.map(async (hour) => {
-            const response = await fetch(
+            const response = await axios.get(
               `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${hour}`
             );
-            const data = await response.json();
+            const data = response.data;
             return {
               hour,
               temperature: data.Prediccion_temperatura_Madrid,
@@ -79,7 +79,8 @@ const Weather = () => {
 
         setIsLoading(false);
       } catch (error) {
-        console.error("Error en la solicitud a la API:", error);
+        console.log(error);
+        // console.error("Error en la solicitud a la API:", error);
         setIsLoading(false);
       }
     };
@@ -123,7 +124,6 @@ const Weather = () => {
     const month = nextDate.getMonth() + 1;
     const day = nextDate.getDate();
     const hour = nextDate.getHours();
-
     try {
       const response = await fetch(
         `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=${hour}`
