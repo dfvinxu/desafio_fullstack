@@ -10,6 +10,7 @@ export default defineConfig({
       "/auth/login": "http://localhost:3000",
       "/auth/google": "http://localhost:3000",
       "/auth/google/callback": "http://localhost:3000",
+      "/api": "http://localhost:3000",
       "/api/fuentes": "http://localhost:3000",
       "/api/museos": "http://localhost:3000",
       "/api/parks": "http://localhost:3000",

@@ -1,0 +1,74 @@
+.closest-markers-section{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 105px;
+    background-color: $color-white;
+    padding: 20px;
+    border-radius: 20px 20px 0px 0px;
+    .close-markers{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        .slider-handle{
+            position: relative;
+            margin-top: -15px;
+            width: 50px;
+            padding: 3px;
+            height: 5px;
+            background-color: $color-neutral-light;
+            cursor: pointer;
+        }
+        .title{
+            align-self: flex-start;
+        }
+        .markers-around{
+            display: flex;
+            align-self: flex-start;
+            gap: 20px;
+            overflow-x: scroll;
+            width: 100%;
+            &::-webkit-scrollbar{
+                width: 0;
+            }
+            .marker{
+                position: relative;
+                min-height: 112px;
+                min-width: 192px;
+                border-radius: 8px;
+                overflow: hidden;
+                .icon-like{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 24px;
+                    width: 24px;
+                    color: $color-white;
+                    margin: 5px;
+                }
+                .marker-image{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+                .marker-title{
+                    text-transform: capitalize;
+                    max-width: 20ch;
+                }
+                .marker-directions{
+                    display: flex; 
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .marker-distance{
+                    display: flex;
+                }
+            }
+        }
+    }
+}
