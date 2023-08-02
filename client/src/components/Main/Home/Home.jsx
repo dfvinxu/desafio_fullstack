@@ -4,6 +4,7 @@ import Map from "./Map"
 import Navbar from "./Navbar" 
 import Filters from "./Filters/Filters";
 import SearchBar from "./SearchBar/SearchBar";
+import Slider from "./Slider/Slider";
 
 
 const libraries = ["places"]
@@ -39,6 +40,7 @@ const Home = () => {
         <Filters updateMarkers={updateMarkers} center={coords} updateTipo={updateTipo}/>
       </article>
       <Navbar />
+      {tipo ? <Slider markers={markers}/> : null}
       {isLoaded ? <Map markers={markers} updateCoords={updateCoords} updateMarkers={updateMarkers} coords={coords} tipo={tipo}/> : <p>Cargando...</p>}
     </>
   );

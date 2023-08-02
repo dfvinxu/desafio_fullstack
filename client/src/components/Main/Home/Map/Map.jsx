@@ -12,7 +12,6 @@ const Map = ({markers, updateMarkers, updateCoords, coords, tipo}) => {
     updateCoords(center)
   }
 
-  console.log(map)
   return(
     <>
       {coords.lat !== 0 ? 

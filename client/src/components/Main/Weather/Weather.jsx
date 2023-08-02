@@ -33,7 +33,7 @@ const Weather = () => {
             const day = nextDate.getDate();
 
             return fetch(
-              `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=12`
+              `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=12`
             ).then((response) => response.json());
           });
 
@@ -41,14 +41,14 @@ const Weather = () => {
           setNextFiveDays(nextFiveDaysData);
 
           const currentResponse = await fetch(
-            `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${currentHour}`
+            `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${currentHour}`
           );
           const currentData = await currentResponse.json();
           setCurrentTemperature(currentData.Prediccion_temperatura_Madrid);
 
           const promises = hours.map(async (hour) => {
             const response = await axios.get(
-              `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${hour}`
+              `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${currentYear}&mes=${currentMonth}&dia=${currentDay}&hora=${hour}`
             );
             const data = response.data;
             return {
@@ -110,7 +110,7 @@ const Weather = () => {
     const hour = nextDate.getHours();
     try {
       const response = await fetch(
-        `https://mdixwt6epk.eu-west-1.awsapprunner.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=${hour}`
+        `https://svalencia1986.pythonanywhere.com/v1/predict?ano=${year}&mes=${month}&dia=${day}&hora=${hour}`
       );
       const data = await response.json();
       return `${Math.floor(data.Prediccion_temperatura_Madrid)} °C`;
