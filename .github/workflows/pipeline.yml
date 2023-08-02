@@ -9,7 +9,7 @@ jobs:
   deploy-server:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'server/') }}
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, './server') }}
 
     steps:
       - name: Checkout
@@ -78,7 +78,7 @@ jobs:
   deploy-client:
     runs-on: ubuntu-latest
 
-    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'client/') }}
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, './client') }}
 
     steps:
       - name: Checkout
