@@ -1,9 +1,9 @@
-import {icons} from "../../../../../../public/icons"
+import {icons} from "../../../../../../public/utils/icons"
 import { Marker } from "@react-google-maps/api";
 const Pointers = ({markers}) => {
   return(
     <>
-      {markers && markers.map((ele, i) => {
+      {markers.length ? markers.map((ele, i) => {
         return(
           <Marker 
             key={i}
@@ -12,7 +12,7 @@ const Pointers = ({markers}) => {
           />
         )
       }  
-      )}
+      ) : null}
     </>
   )
 }

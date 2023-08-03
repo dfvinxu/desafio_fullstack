@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode"
 import { AiOutlineHeart } from "react-icons/ai";
@@ -80,6 +80,8 @@ const EventList = () => {
         }
         const data = await response.json();
         console.log(data.message);
+      } else {
+        console.log("no hay cookie")
       }
 
     } catch (error) {

@@ -7,18 +7,18 @@ import MedKit from "../../../../../public/figma_svg/med-black.svg"
 import Location from "../../../../../public/figma_svg/location.svg"
 import { getMarkers } from "../../../../../utils/script";
 
-const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {
+const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter}) => {
   const navigate = useNavigate();
   return(
     <section className="filters">
       <article className="active" onClick={() => {
-        getMarkers({center, tipo: "fuentes"}).then(res => updateMarkers(res))
+        getMarkers({center: userPosition, tipo: "fuentes"}).then(res => updateMarkers(res))
         updateTipo("fuentes")
       }}>
         <Fuente />
       </article>
       <article onClick={() => {
-        getMarkers({center, tipo: "parques"}).then(res => updateMarkers(res))
+        getMarkers({center: userPosition, tipo: "parques"}).then(res => updateMarkers(res))
         updateTipo("parques")
       }}>
         <Arbol />
@@ -27,13 +27,13 @@ const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {
         <Temperatura />
       </article>
       <article onClick={() => {
-        getMarkers({center, tipo: "museos"}).then(res => updateMarkers(res))
+        getMarkers({center: userPosition, tipo: "museos"}).then(res => updateMarkers(res))
         updateTipo("museos")
       }}>
         <InterestPoints />
       </article>
       <article onClick={() => {
-        getMarkers({center, tipo: "salud"}).then(res => updateMarkers(res))
+        getMarkers({center: userPosition, tipo: "salud"}).then(res => updateMarkers(res))
         updateTipo("salud")
       }}>
         <MedKit/>

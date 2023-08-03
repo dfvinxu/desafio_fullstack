@@ -7,6 +7,7 @@ export const getCenter = (obj) => {
 };
 
 export const getMarkers = async ({ center, tipo }) => {
+  if (tipo === null) return;
   let { lat, lng } = center;
   let res = await axios.get(`/api/${tipo}?lat=${lat}&lng=${lng}`);
   return res.data;

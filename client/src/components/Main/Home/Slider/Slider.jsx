@@ -39,7 +39,7 @@ const Slider = ({markers, calculateRoute, userCenter}) => {
                 <img src="./figma_svg/marker.svg" alt="marker icon" />
                 <span>distancia</span>
               </article>
-              <img src="./figma_svg/path.svg" alt="pathto icon" onClick={() => calculateRoute({origin: {lat: ele.LATITUD, lng: ele.LONGITUD}, destination: userCenter})}/>
+              <img src="./figma_svg/path.svg" alt="pathto icon" onClick={() => calculateRoute({origin: {lat: ele.LATITUD, lng: ele.LONGITUD}, destination: userPosition})}/>
             </section>
           </article>
           ))}
