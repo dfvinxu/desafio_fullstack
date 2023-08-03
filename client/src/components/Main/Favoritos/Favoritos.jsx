@@ -80,7 +80,8 @@ const Favoritos = () => {
                 </article>
               
                 <section className="event-icons">
-                <BiSolidTrashAlt className="event-icon" onClick={() =>   {handleDeleteFavorite(event.TITULO)}} />
+                <BiSolidTrashAlt className="event-icon" 
+                    onClick={() => {handleDeleteFavorite(event.TITULO)}} />
                     <a
                       href={`${event["CONTENT-URL"]}`}
                       target="_blank"
