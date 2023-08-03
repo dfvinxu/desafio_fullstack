@@ -1,11 +1,8 @@
-import React from "react";
 import usePlaceAutocomplete, {getGeocode, getLatLng } from "use-places-autocomplete"
-import { BsSearch } from "react-icons/bs";
 function SearchBar({updateCoords}) {
-  const {ready, value, setValue, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete()
+  const { value, setValue, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete()
   const handleChange = (e) => setValue(e.target.value)
   const handleSelect = async (e) => {
-    console.log(e.target.textContent)
     setValue(e.target.textContent, false)
     clearSuggestions()
     let code = await getGeocode({address: e.target.textContent})
@@ -15,7 +12,7 @@ function SearchBar({updateCoords}) {
   return(
     <>
       <section className="search-bar">
-        <BsSearch className="icon"/>
+        <img src="./figma_svg/search.svg" className="icon"/>
         <input type="text" placeholder="Buscar..." onChange={handleChange} value={value}/>
         <section className="options">
           <ul>

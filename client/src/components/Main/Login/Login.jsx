@@ -1,13 +1,14 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import { AuthContext } from "../../../context/authContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { updateCookie } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -30,15 +31,22 @@ const Login = () => {
         body: JSON.stringify(userData),
       });
 
-
       if (response.ok) {
-        setIsLoggedIn(true);
-        navigate("/home");
+        console.log(Cookies.get("access-token"))
+        updateCookie(Cookies.get("access-token"));
+
+        // Redirect to IntermediatePage
+        navigate("/intermediate");
+
+        // After 3 seconds, redirect to /home
+        setTimeout(() => {
+          navigate("/home");
+        }, 300);
       } else {
         setError("Email o contraseña no coincide");
       }
     } catch (error) {
-      console.error("Error");
+      console.error({error});
     }
   };
 
@@ -88,7 +96,9 @@ const Login = () => {
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>
-          <button>Iniciar sesión</button>
+          <button className="login-button2 custom-button">
+            Iniciar sesión
+          </button>
         </form>
       </section>
       <span className="register-link">
