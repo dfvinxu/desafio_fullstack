@@ -84,7 +84,7 @@ const googleLogin = (req, res) => {
       httpOnly: true,
       sameSite: "lax",
     })
-    .redirect("http://localhost:5173/home");
+    .redirect("https://eyh53wm8p8.eu-west-1.awsapprunner.com/home");
 };
 
 module.exports = {

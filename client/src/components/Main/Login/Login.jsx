@@ -32,6 +32,7 @@ const Login = () => {
       });
 
       if (response.ok) {
+        console.log(Cookies.get("access-token"))
         updateCookie(Cookies.get("access-token"));
 
         // Redirect to IntermediatePage

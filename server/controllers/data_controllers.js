@@ -42,14 +42,17 @@ const getPiscinas = async (req, res) => {
 
 const getMarkers = async (req, res) => {
   let { type } = req.params;
-  let { lat, lng } = req.query;
-  let regex = new RegExp(type, "gi");
-  const data = await Markers.find({
-    TIPO: regex,
-    LATITUD: { $gt: +lat - 0.025, $lt: +lat + 0.025 },
-    LONGITUD: { $gt: +lng - 0.025, $lt: +lng + 0.025 },
-  });
-  res.status(200).json(data);
+  console.log(type);
+  if (type !== "null") {
+    let { lat, lng } = req.query;
+    let regex = new RegExp(type, "gi");
+    const data = await Markers.find({
+      TIPO: regex,
+      LATITUD: { $gt: +lat - 0.025, $lt: +lat + 0.025 },
+      LONGITUD: { $gt: +lng - 0.025, $lt: +lng + 0.025 },
+    });
+    res.status(200).json(data);
+  }
 };
 
 module.exports = {

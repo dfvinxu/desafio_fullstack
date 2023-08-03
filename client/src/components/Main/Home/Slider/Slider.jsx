@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {AiOutlineHeart} from "react-icons/ai"
-const Slider = ({markers, calculateRoute, userCenter}) => {
+const Slider = ({markers, calculateRoute, userPosition}) => {
   const sliderRef = useRef(null)
   const [height, setHeight] = useState(0)
 
@@ -29,7 +29,7 @@ const Slider = ({markers, calculateRoute, userCenter}) => {
         <section className="markers-around">
         {markers && markers.map((ele, i) => (
           <article className="marker" key={i}>
-            <section className="marker-image-container" >
+            <section className="marker-image-container">
               <AiOutlineHeart className="icon-like"/>
               <img src="./image/fuente.jpeg" alt="fuente de agua" className="marker-image"/>
             </section>
@@ -39,7 +39,7 @@ const Slider = ({markers, calculateRoute, userCenter}) => {
                 <img src="./figma_svg/marker.svg" alt="marker icon" />
                 <span>distancia</span>
               </article>
-              <img src="./figma_svg/path.svg" alt="pathto icon" onClick={() => calculateRoute({origin: {lat: ele.LATITUD, lng: ele.LONGITUD}, destination: userCenter})}/>
+              <img src="./figma_svg/path.svg" alt="pathto icon" onClick={() => calculateRoute({origin: {lat: ele.LATITUD, lng: ele.LONGITUD}, destination: userPosition})}/>
             </section>
           </article>
           ))}

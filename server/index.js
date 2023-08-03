@@ -1,18 +1,21 @@
 const express = require("express");
 const app = express();
-const port = 3000;
 const router = require("./routes/api-router");
+const port = 3000;
 const authRoutes = require("./routes/auth_routes");
-require("./utils/mongo_db");
-const morgan = require("./utils/morgan");
 const error404 = require("./middlewares/error404");
+const morgan = require("./utils/morgan");
 const session = require("express-session");
 const passport = require("passport");
-var cors = require("cors");
+let cors = require("cors");
 const helmet = require("helmet");
+require("./utils/mongo_db");
 const cookieParser = require("cookie-parser");
 
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://eyh53wm8p8.eu-west-1.awsapprunner.com/",
+];
 
 app.use(
   cors({
@@ -32,8 +35,9 @@ app.use(cookieParser());
 
 //Rutas API
 app.use("/api", router);
-app.use("/auth", authRoutes);
 
+// Rutas User
+app.use("/auth", authRoutes);
 // Errores
 app.use(error404);
 

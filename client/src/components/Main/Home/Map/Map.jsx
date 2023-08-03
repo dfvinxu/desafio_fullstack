@@ -1,20 +1,25 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {GoogleMap, DirectionsRenderer} from "@react-google-maps/api"
 import Pointers from "./Pointers"
 import { getCenter, getMarkers } from "../../../../../utils/script";
+import { AuthContext } from "../../../../context/authContext";
 
-const Map = ({markers, updateMarkers, updateCoords, tipo, userCenter, directionsResponse}) => {
+const Map = React.memo(({markers, updateMarkers, updateCoords, tipo, directionsResponse}) => {
+  const {userPosition, destination} = useContext(AuthContext)
+  console.log({markers, updateMarkers, updateCoords, tipo, directionsResponse, userPosition})
   const mapRef = useRef(null)
-  const [map, setMap] = useState(null)
   const handleTileLoad = () => {
     const center = getCenter(mapRef.current)
     getMarkers({center, tipo}).then(res => updateMarkers(res))
     updateCoords(center)
   }
+  // useEffect(() => {
+  //   updateCoords()
+  // }, [])
 
   return(
     <>
-      {userCenter.lat !== 0 ? 
+      {userPosition.lat !== 0 ?
         <GoogleMap
           ref={mapRef}
           zoom={15} mapContainerClassName="map-container" options={{
@@ -22,19 +27,18 @@ const Map = ({markers, updateMarkers, updateCoords, tipo, userCenter, directions
           mapId: "cce25c7cd1c6e94e",
           maxZoom: 17,
           minZoom: 15,
-          center: userCenter,
         }} 
+          center={destination.lat !== 0 ? destination : userPosition}
           onTilesLoaded={handleTileLoad}
-          onLoad={(map) => setMap(map)}
         >
-          {markers && <Pointers markers={markers}/>}
+          {markers && tipo ? <Pointers markers={markers}/> : null}
           {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
         </GoogleMap>
       : 
       <p>Cargando</p>}
-      
+
     </>
   )
-}
-
+})
+Map.displayName = "Map"
 export default Map;
