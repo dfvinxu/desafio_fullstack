@@ -1,7 +1,7 @@
-import { IoIosArrowBack } from "react-icons/io";
+import GoBack from "../../../../public/figma_svg/go-back.svg";
 import { useNavigate } from "react-router-dom";
 
-const BackButton = ({ link }) => {
+const BackButton = ({ link, icon=<GoBack/> }) => {
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate(link);
@@ -10,7 +10,7 @@ const BackButton = ({ link }) => {
   return (
     <>
       <button className="back-button" onClick={handleGoBack}>
-        <IoIosArrowBack />
+        {icon}
       </button>
     </>
   );

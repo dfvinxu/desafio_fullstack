@@ -6,7 +6,6 @@ import { LocationContext } from "../../../context/locationContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
-  const { updateLocations } = useContext(LocationContext);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -100,7 +99,7 @@ const Register = () => {
   };
   return (
     <>
-      <BackButton />
+      <BackButton link={"/"}/>
       <section className="form-register">
         <h2 className="title-register">¡Hola! Regístrate para empezar</h2>
         <form className="form" onSubmit={handleSubmit}>
