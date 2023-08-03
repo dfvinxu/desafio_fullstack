@@ -52,7 +52,7 @@ const getFavorites = async (req, res) => {
 
 const deleteFavorite = async (req, res) => {
     try {
-      const { favoriteId } = req.params;
+      const {userId, favoriteId } = req.params;
       const favorite = await Favorites.findByPk(favoriteId);
   
       if (!favorite) {
