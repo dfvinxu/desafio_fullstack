@@ -9,6 +9,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authCookie, setAuthCookie] = useState("")
   const [userPosition, setUserPosition] = useState({lat: 0, lng: 0})
+  const [destination, setDestination] = useState({lat: 0, lng: 0})
 
   useEffect(() => {
     let token = Cookies.get("access-token")
@@ -25,12 +26,15 @@ function App() {
   }
 
   const updateUserPosition = ({lat, lng}) => setUserPosition({lat, lng})
+  const updateDestination = ({lat, lng}) => setDestination({lat, lng})
 
   const userCookie = {
     isLoggedIn,
     updateCookie,
     authCookie,
     updateUserPosition,
+    updateDestination,
+    destination,
     userPosition,
   };
 

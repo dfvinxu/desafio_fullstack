@@ -5,7 +5,7 @@ import { getCenter, getMarkers } from "../../../../../utils/script";
 import { AuthContext } from "../../../../context/authContext";
 
 const Map = React.memo(({markers, updateMarkers, updateCoords, tipo, directionsResponse}) => {
-  const {userPosition} = useContext(AuthContext)
+  const {userPosition, destination} = useContext(AuthContext)
   console.log({markers, updateMarkers, updateCoords, tipo, directionsResponse, userPosition})
   const mapRef = useRef(null)
   const handleTileLoad = () => {
@@ -28,7 +28,7 @@ const Map = React.memo(({markers, updateMarkers, updateCoords, tipo, directionsR
           maxZoom: 17,
           minZoom: 15,
         }} 
-          center={userPosition}
+          center={destination.lat !== 0 ? destination : userPosition}
           onTilesLoaded={handleTileLoad}
         >
           {markers && tipo ? <Pointers markers={markers}/> : null}

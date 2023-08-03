@@ -10,7 +10,7 @@ import { AuthContext } from "../../../context/authContext";
 const libraries = ["places"];
 
 const Home = () => {
-  const {userPosition ,updateUserPosition} = useContext(AuthContext)
+  const {userPosition ,updateUserPosition, updateDestination} = useContext(AuthContext)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [markers, setMarkers] = useState([]);
   const [coords, setCoords] = useState({
@@ -56,7 +56,10 @@ const Home = () => {
   const updateMarkers = (newMarkers) => setMarkers(newMarkers);
   const updateCoords = (newCoords) => setCoords(newCoords);
   const updateTipo = (newTipo) => setTipo(newTipo);
-  const moveToCenter = () => updateUserPosition(userPosition)
+  const moveToCenter = () => {
+    updateDestination({lat: 0, lng: 0})
+    updateUserPosition(userPosition)
+  }
   return (
     <>
       <article className="inputs">

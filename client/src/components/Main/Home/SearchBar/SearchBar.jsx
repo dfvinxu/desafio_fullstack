@@ -1,17 +1,21 @@
+import { useContext } from "react"
 import usePlaceAutocomplete, {getGeocode, getLatLng } from "use-places-autocomplete"
+import { AuthContext } from "../../../../context/authContext"
 
 function SearchBar({updateCoords,isLoaded}) {
   const { value, setValue, init, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete({
     initOnMount: false,
     cache: 24 * 60 * 60,
   })
+  const {updateDestination} = useContext(AuthContext)
   const handleChange = (e) => setValue(e.target.value)
+
   const handleSelect = async (e) => {
     setValue(e.target.textContent, false)
     clearSuggestions()
     let code = await getGeocode({address: e.target.textContent})
     let {lat, lng} = await getLatLng(code[0])
-    updateCoords({lat, lng})
+    updateDestination({lat, lng})
   }
 
   isLoaded ? init() : null
