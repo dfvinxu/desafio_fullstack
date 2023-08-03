@@ -30,6 +30,9 @@ const Profile = () => {
   const handleGoHome = () => {
     navigate("/home");
   };
+  const handleMyProfile = () => {
+    navigate("/my-profile");
+  };
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -68,13 +71,13 @@ const Profile = () => {
         <FaUserCircle className="profile-picture"/> 
         <article className="profile-info">
         {console.log("UserInfo:", userInfo)}
-          <p className="profile-name">Hola, {loading ? "Cargando..." : userInfo.name}</p>
+          <p className="profile-name">{loading ? "Cargando..." : "Hola, " + userInfo.name}</p>
           <p className="profile-email">{loading ? "Cargando..." : userInfo.email}</p>
         </article>
       </section>
       <section className="user-options">
       <section className="profile-options">
-        <article className="option">
+        <article className="option" onClick={handleMyProfile}>
           <span className="option-section">
             <ProfileIcon /> <p className="text">Mi perfil</p> 
           </span>

@@ -10,6 +10,7 @@ import Profile from "./Profile/Profile";
 import Eventos from "./Eventos/Eventos";
 import IntermediatePage from "./IntermediatePage/IntermediatePage";
 import Favoritos from './Favoritos/Favoritos'
+import User from './User/User'
 const Main = () => {
   const [locations, setLocations] = useState([]);
   const updateLocations = (newLocation) =>
@@ -29,6 +30,7 @@ const Main = () => {
           <Route path="/intermediate" element={<IntermediatePage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/my-profile" element={<User />} />
           <Route path="/eventos" element={<Eventos />} />
           <Route path="/weather" element={<Weather />} />
           <Route path="/favoritos" element={<Favoritos />} />
