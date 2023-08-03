@@ -7,6 +7,7 @@ import { AiOutlineLink } from "react-icons/ai";
 import { AiFillHeart } from 'react-icons/ai'
 import { BsSearch } from "react-icons/bs";
 import BackButton from "../BackButton";
+import {BiSolidTrashAlt} from 'react-icons/bi'
 
 
 const Favoritos = () => {
@@ -41,6 +42,12 @@ const Favoritos = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handleDeleteFavorite = (eventTitulo) => {
+    setFavoriteEvents((prevFavoriteEvents) =>
+      prevFavoriteEvents.filter((event) => event.TITULO !== eventTitulo)
+    );
+  };
+  
   return (
     <section className="favorites">
       <article className="search-bar-container">
@@ -59,7 +66,7 @@ const Favoritos = () => {
       <section className="favorites-frame">
         {favoriteEvents.length > 0 ? (
           favoriteEvents.map((event) => (
-            <article key={uuidv4()} className="event-card">
+            <article key={event.id} className="event-card">
               <img 
                 src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg"
                 alt="event"
@@ -73,7 +80,7 @@ const Favoritos = () => {
                 </article>
               
                 <section className="event-icons">
-                    <AiOutlineHeart className="event-icon" />
+                <BiSolidTrashAlt className="event-icon" onClick={() =>   {handleDeleteFavorite(event.TITULO)}} />
                     <a
                       href={`${event["CONTENT-URL"]}`}
                       target="_blank"

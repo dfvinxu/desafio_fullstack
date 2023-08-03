@@ -47,7 +47,7 @@ const checkEmailLogIn = async (req, res) => {
       return res.status(401).json({ msj: "Incorrect password" });
     }
     const payload = {
-      user_id: user.dataValues.userId,
+      user_id: user.dataValues.userId
     };
     const token = jwt.sign(payload, "secret_password", {
       expiresIn: "7d",

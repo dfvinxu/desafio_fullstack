@@ -107,7 +107,7 @@ const EventList = () => {
           <p>No events found.</p>
         ) : (
           filteredEvents.map((event) => (
-            <article key={event.id} className="event-card">
+            <article key={uuidv4()} className="event-card">
               <img
                 src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg"
                 alt="event"
