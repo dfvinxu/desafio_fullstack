@@ -283,13 +283,11 @@ const Register = () => {
             </>
           )}
         </form>
-        {formSection === 1 && <EnterOptions />}
+        <EnterOptions />
       </section>
-      {formSection === 1 && (
-        <span className="login-link">
-          ¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión</Link>
-        </span>
-      )}
+      <span className="login-link">
+        ¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión</Link>
+      </span>
     </>
   );
 };

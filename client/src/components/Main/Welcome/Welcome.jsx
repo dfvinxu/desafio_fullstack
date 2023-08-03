@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import EnterOptions from "../EnterOptions/EnterOptions";
 import { useContext } from "react";
 import { LocationContext } from "../../../context/locationContext";
-import logoSvg from "../../../../public/figma_svg/logo.svg";
+import LogoSVG from "../../../../public/figma_svg/logo.svg";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -13,11 +13,13 @@ const Welcome = () => {
 
   const handleRedirect = (link) => {
     updateLocations(location.pathname);
-    navigate(link);
+    setTimeout(() => {
+      navigate(link);
+    }, 300)
   };
   return (
     <>
-      <img src={logoSvg} alt="logo" />
+      <LogoSVG className="logo"/>
       <section className="language-selector">
         <label htmlFor="español">
           <img src="./svg/spain.svg" alt="español" className="flag" />

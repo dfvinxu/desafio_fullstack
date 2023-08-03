@@ -1,6 +1,9 @@
 @import "../utils/_variables";
 @import "../utils/mixins";
 
+.logo{
+  align-self: center;
+}
 .language-selector {
   display: flex;
   justify-content: center;
@@ -33,7 +36,10 @@
   @include button;
 }
 .login-button {
-  background: #002d80;
+  background: $color-primary-regular;
   color: $color-white;
   @include button;
+  &:active{
+    background-color: $color-primary-dark;
+  }
 }

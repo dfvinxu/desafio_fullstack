@@ -7,11 +7,11 @@ const IntermediatePage = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigate("/home");
-    }, 300); //timeout
+    }, 500); //timeout
     return () => clearTimeout(timeout);
   }, [navigate]);
 
-  return <div className="intermediate-page">{/* No content */}</div>;
+  return <section className="intermediate-page"></section>;
 };
 
 export default IntermediatePage;
