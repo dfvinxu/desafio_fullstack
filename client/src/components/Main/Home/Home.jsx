@@ -67,7 +67,7 @@ const Home = () => {
   return (
     <>
       <article className="inputs">
-        <SearchBar updateCoords={updateCoords} />
+        <SearchBar updateCoords={updateCoords} isLoaded={isLoaded}/>
         <Filters
           updateMarkers={updateMarkers}
           center={coords}
@@ -77,7 +77,7 @@ const Home = () => {
       </article>
       <Navbar />
       {tipo ? <Slider markers={markers} calculateRoute={calculateRoute} userCenter={userCenter}/> : null}
-      {userCenter.lat !== 0 ? (
+      {isLoaded ? (
         <Map
           markers={markers}
           updateCoords={updateCoords}

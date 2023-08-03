@@ -1,6 +1,10 @@
 import usePlaceAutocomplete, {getGeocode, getLatLng } from "use-places-autocomplete"
-function SearchBar({updateCoords}) {
-  const { value, setValue, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete()
+
+function SearchBar({updateCoords, isLoaded}) {
+  const { value, setValue, init, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete({
+    initOnMount: false,
+    cache: 24 * 60 * 60,
+  })
   const handleChange = (e) => setValue(e.target.value)
   const handleSelect = async (e) => {
     setValue(e.target.textContent, false)
@@ -9,6 +13,8 @@ function SearchBar({updateCoords}) {
     let {lat, lng} = await getLatLng(code[0])
     updateCoords({lat, lng})
   }
+
+  isLoaded ? init() : null
   return(
     <>
       <section className="search-bar">
