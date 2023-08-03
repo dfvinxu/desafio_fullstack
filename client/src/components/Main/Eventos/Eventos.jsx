@@ -73,7 +73,7 @@ const EventList = () => {
                   <h2 className="event-title">{event.TITULO}</h2>
                   <p className="event-address">{event.DIRECCION}</p>
                 </article>
-                <section className="event-icons">
+                <section className="event-icons" onClick={() => handleFavorites(event)}>
                   <AiOutlineHeart className="event-icon" />
                   <a
                     href={`${event["CONTENT-URL"]}`}
