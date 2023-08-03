@@ -1,3 +1,5 @@
+import { useState, useEffect, useContext} from 'react';
+import { AuthContext } from '../../../context/authContext';
 import axios from "axios"
 import Close from "../../../../public/figma_svg/xmark.svg"
 import ProfileIcon from "../../../../public/figma_svg/profile-gray.svg"
@@ -7,8 +9,16 @@ import Messages from "../../../../public/figma_svg/mensajes.svg"
 import Language from "../../../../public/figma_svg/language.svg"
 import Forward from "../../../../public/figma_svg/go-forward.svg"
 import { useNavigate } from "react-router-dom"
+import { FaUserCircle } from 'react-icons/fa'
+import jwt_decode from "jwt-decode"
 
 const Profile = () => {
+  const {authCookie} = useContext(AuthContext)
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: ""
+  });
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
   const handleLogout = async () => {
     await axios.get("/auth/logout")
@@ -16,20 +26,50 @@ const Profile = () => {
       navigate("/")
     }, 400)
   }
+
+  const handleGoHome = () => {
+    navigate("/home");
+  };
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        if (authCookie) {
+          const decodeToken = jwt_decode(authCookie);
+          let { user_id } = decodeToken;
+          console.log(user_id); 
+          const response = await axios.get(`/api/users/${user_id}`) 
+          if (response.data) {
+            console.log(response.data.message);
+            setUserInfo({
+              name: response.data.message.name,
+              email: response.data.message.email
+            });
+          } else {
+            console.log('Error');
+          }
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error("Error al obtener la información del usuario:", error);
+      }
+    };
+  
+    fetchUserInfo();
+  }, []);
+  
+
   return (
     <section className="profile-container">
-      <span className="close-icon">
+      <span className="close-icon" onClick={handleGoHome}>
         <Close />
       </span>
       <section className="profile-header">
-        <img
-          className="profile-picture"
-          src="https://images3.memedroid.com/images/UPLOADED158/63ae8a9794f6e.jpeg"
-          alt="profile picture"
-        />
+        <FaUserCircle className="profile-picture"/> 
         <article className="profile-info">
-          <p className="profile-name">Andrea</p>
-          <p className="profile-email">andrea@gmail.com</p>
+        {console.log("UserInfo:", userInfo)}
+          <p className="profile-name">{loading ? "Cargando..." : userInfo.name}</p>
+          <p className="profile-email">{loading ? "Cargando..." : userInfo.email}</p>
         </article>
       </section>
       <section className="user-options">

@@ -37,6 +37,7 @@
       height: 80px;
       border-radius: 50%;
       border: 1px solid $color-primary-regular;
+      color: $color-primary-regular;
     }
     .profile-name{
       font-size: 20px;
@@ -53,10 +54,19 @@
     width: 114%;
     padding: 15px 20px;
     gap: 16px;
+  }
     .text{
       font-weight: 400;
       font-size: 16px;
       color: $color-neutral-x-dark;
+    }
+    .text:hover{
+      font-weight: 700;
+      color: $color-primary-regular;
+    }
+    .text:active{
+      font-weight: 700;
+      color: $color-primary-regular;
     }
     .profile-options {
       display: flex;
@@ -106,6 +116,14 @@
     font-size: 15px;
     
   }
+  .logout-btn:hover {
+    background-color: $color-primary-regular;
+    color: white;
+  }
+  .logout-btn:active{
+    background-color: $color-primary-regular;
+    color: white;
+  }
 
   /* Footer styles */
   .profile-footer {
@@ -139,4 +157,4 @@
     }
 
   }
-}
+
