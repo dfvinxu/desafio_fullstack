@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {AiOutlineHeart} from "react-icons/ai"
+import { AiFillHeart } from 'react-icons/ai';
 const Slider = ({markers, calculateRoute, userCenter}) => {
   const sliderRef = useRef(null)
   const [height, setHeight] = useState(0)
@@ -30,7 +30,7 @@ const Slider = ({markers, calculateRoute, userCenter}) => {
         {markers && markers.map((ele, i) => (
           <article className="marker" key={i}>
             <section className="marker-image-container" >
-              <AiOutlineHeart className="icon-like"/>
+              <AiFillHeart className="icon-like"/>
               <img src="./image/fuente.jpeg" alt="fuente de agua" className="marker-image"/>
             </section>
             <p className="marker-title">{ele["DIRECCION"].toLowerCase()}</p>
