@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { AiOutlineHeart, AiOutlineLink } from "react-icons/ai";
+import jwt_decode from "jwt-decode"
+import { AiOutlineHeart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
-import Cookies from 'js-cookie';
-import jwt_decode from "jwt-decode"; 
-
-import { es } from "date-fns/locale";
+import { AuthContext } from "../../../context/authContext";
+import { AiOutlineLink } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 //  Spanish locale
 import BackButton from "../BackButton";
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const { authCookie } = useContext(AuthContext)
   const [favoriteEvents, setFavoriteEvents] = useState(false);
 
   useEffect(() => {
@@ -51,47 +51,39 @@ const EventList = () => {
 
   
   const handleFavorites = async(event) => {
-    try{
-      const token = Cookies.get("access-token"); 
-      console.log(token)
-      const decodedToken = jwt_decode(token);
-      const userId = decodedToken.userId;
-      console.log(userId)
-    } catch(error){
-      console.log(error)
+    try {
+      if(authCookie){
+        const decodedToken = jwt_decode(authCookie)
+        let {user_id: userId} = decodedToken
+        const formattedDate = event.FECHA.substring(0, 10);
+        const eventFavInfo = {
+          userId,
+          TITULO: event.TITULO,
+          DIRECCION: event.DIRECCION,
+          FECHA: formattedDate,
+          HORA: event.HORA === 'No disponible' ? "12:00" : event.HORA
+        }
+        const response = await fetch("/api/favorites/eventos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(eventFavInfo),
+        });
+  
+        if (response.ok) {
+          setFavoriteEvents(true);
+          console.log('Guardado correctamente!');
+        } else {
+          console.log('No se ha guardado');
+        }
+        const data = await response.json();
+        console.log(data.message);
+      }
+
+    } catch (error) {
+      console.error("Error al agregar el evento a favoritos:", error);
     }
-   
-
-    // const formattedDate = event.FECHA.split("T")[0];
-    // const eventFavInfo = {
-    //   userId: userId,
-    //   TITULO: event.TITULO,
-    //   DIRECCION: event.DIRECCION,
-    //   FECHA: formattedDate,
-    //   HORA: event.HORA
-    // }
-    // console.log("userId:", userId);
-    // console.log("eventFavInfo:", eventFavInfo);
-    // try {
-  //     const response = await fetch("/api/favorites/eventos", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(eventFavInfo),
-  //     });
-
-  //     if (response.ok) {
-  //       setFavoriteEvents(true);
-  //       console.log('Guardado correctamente!');
-  //     } else {
-  //       console.log('No se ha guardado');
-  //     }
-  //     const data = await response.json();
-  //     console.log(data.message);
-  //   } catch (error) {
-  //     console.error("Error al agregar el evento a favoritos:", error);
-  //   }
   }
 
   return (
@@ -127,7 +119,7 @@ const EventList = () => {
                   <p className="event-address">{event.DIRECCION}</p>
                 </article>
                 <section className="event-icons">
-                  <AiOutlineHeart className="event-icon" />
+                  <AiOutlineHeart className="event-icon" onClick={() => handleFavorites(event)}/>
                   <a
                     href={`${event["CONTENT-URL"]}`}
                     target="_blank"

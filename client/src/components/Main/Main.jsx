@@ -9,6 +9,7 @@ import Weather from "./Weather/Weather";
 import Profile from "./Profile/Profile";
 import Eventos from "./Eventos/Eventos";
 import IntermediatePage from "./IntermediatePage/IntermediatePage";
+import Favoritos from './Favoritos/Favoritos'
 const Main = () => {
   const [locations, setLocations] = useState([]);
   const updateLocations = (newLocation) =>

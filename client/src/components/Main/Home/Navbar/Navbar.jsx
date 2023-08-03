@@ -4,10 +4,6 @@ import Events from "../../../../../public/figma_svg/events.svg"
 import Like from "../../../../../public/figma_svg/like.svg"
 import Profile from "../../../../../public/figma_svg/profile.svg"
 
-import {LuPartyPopper} from "react-icons/lu"
-import {AiOutlineHeart, AiOutlineUser} from "react-icons/ai"
-import {useNavigate} from 'react-router-dom'
-
 const Navbar = () => {
   const navigate = useNavigate()
   return (

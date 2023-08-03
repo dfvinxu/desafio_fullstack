@@ -7,26 +7,27 @@ import Cookies from 'js-cookie';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authCookie, setAuthCookie] = useState("")
 
-  const setAuthCookie = (token, isLoggedIn) => {
-    Cookies.set("access-token", token, { expires: 7 }); 
-    setIsLoggedIn(isLoggedIn);
-  };
-
-
+  const updateCookie = (cookie) => {
+    setAuthCookie(cookie)
+  }
   
   useEffect(() => {
-    const token = Cookies.get("access-token");
-    const userId = Cookies.get("user-id");
-    if (token && userId) {
+    let token = Cookies.get("access-token")
+    if (token) {
+      setAuthCookie(token)
       setIsLoggedIn(true); 
+    } else {
+      setIsLoggedIn(false)
     }
   }, []);
 
  
   const userCookie = {
     isLoggedIn,
-    setAuthCookie
+    updateCookie,
+    authCookie
   };
 
   return (
