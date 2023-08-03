@@ -5,6 +5,8 @@ import { AuthContext } from '../../../context/authContext';
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { FaUserCircle } from 'react-icons/fa'
+import {AiTwotoneEdit} from 'react-icons/ai'
+import BackButton from "../BackButton";
 
 const User = () => {
   const {authCookie} = useContext(AuthContext)
@@ -50,19 +52,48 @@ const User = () => {
   }, []);
   
   return (
-  <section className="profile-container">
+    <section className="profile-container">
+      <article className="search-bar-container">
+        <BackButton link={"/home"} />
+      </article>
     <section className="profile-header">
-        <FaUserCircle className="profile-picture"/> 
-        <article className="profile-info">
-        {console.log("UserInfo:", userInfo)}
-          <p className="profile-name">{loading ? "Cargando..." : `Hola, ${userInfo.name}`}</p>
-          <p className="profile-email">{loading ? "Cargando..." :  userInfo.email}</p>
-          <p className="profile-username">{loading ? "Cargando..." : `Nombre de usuario: ${userInfo.userName}`}</p>
-          <p className="profile-birth">{loading ? "Cargando..." : `Fecha de nacimiento: ${userInfo.birth}`}</p>
-          <p className="profile-nationality">{loading ? "Cargando..." : `Nacionalidad: ${userInfo.nationality}`}</p>
-        </article>
+      <FaUserCircle className="profile-picture"/> 
+      <article className="profile-info">
+        <h3 className="title">Mi Perfil</h3>
+        <table className="user-table">
+          <tr>
+            <th>Nombre</th>
+            <td>{userInfo.name}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{userInfo.email}</td>
+            <td><AiTwotoneEdit /></td>
+          </tr>
+          <tr>
+            <th>Nombre de usuario</th>
+            <td>{userInfo.userName}</td>
+            <td><AiTwotoneEdit /></td>
+          </tr>
+          <tr>
+            <th>Fecha de nacimiento</th>
+            <td>{userInfo.birth}</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Nacionalidad</th>
+            <td>{userInfo.nationality}</td>
+            <td></td>
+          </tr>
+        </table>
+      </article>
+      <button className="change-password-btn">
+        Cambiar contraseña
+      </button>
     </section>  
   </section>
+  
 );
 };
 
