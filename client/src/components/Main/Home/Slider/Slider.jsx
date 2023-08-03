@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {AiOutlineHeart} from "react-icons/ai"
-const Slider = ({markers}) => {
+const Slider = ({markers, calculateRoute, userCenter}) => {
   const sliderRef = useRef(null)
   const [height, setHeight] = useState(0)
 
@@ -39,7 +39,7 @@ const Slider = ({markers}) => {
                 <img src="./figma_svg/marker.svg" alt="marker icon" />
                 <span>distancia</span>
               </article>
-              <img src="./figma_svg/path.svg" alt="pathto icon" />
+              <img src="./figma_svg/path.svg" alt="pathto icon" onClick={() => calculateRoute({origin: {lat: ele.LATITUD, lng: ele.LONGITUD}, destination: userCenter})}/>
             </section>
           </article>
           ))}
