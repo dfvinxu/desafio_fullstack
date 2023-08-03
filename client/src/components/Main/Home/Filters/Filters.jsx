@@ -5,8 +5,6 @@ import Temperatura from "../../../../../public/figma_svg/temperature-black.svg"
 import InterestPoints from "../../../../../public/figma_svg/interest-points-black.svg"
 import MedKit from "../../../../../public/figma_svg/med-black.svg"
 import Location from "../../../../../public/figma_svg/location.svg"
-
-
 import { getMarkers } from "../../../../../utils/script";
 
 const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {

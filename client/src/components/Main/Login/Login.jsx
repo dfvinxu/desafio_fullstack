@@ -31,8 +31,6 @@ const Login = () => {
         body: JSON.stringify(userData),
       });
 
-      console.log(response);
-
       if (response.ok) {
         updateCookie(Cookies.get("access-token"));
 
@@ -47,8 +45,7 @@ const Login = () => {
         setError("Email o contraseña no coincide");
       }
     } catch (error) {
-      console.log(error)
-      console.error("Error");
+      console.error({error});
     }
   };
 

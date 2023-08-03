@@ -20,7 +20,7 @@ const Navbar = () => {
         <Like />
         <span>Favoritos</span>
       </article>
-      <article className="item">
+      <article className="item" onClick={() => navigate("/profile")}>
         <Profile />
         <span>Perfil</span>
       </article>

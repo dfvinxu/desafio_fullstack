@@ -21,7 +21,7 @@ function App() {
     } else {
       setIsLoggedIn(false)
     }
-  }, []);
+  }, [authCookie]);
 
  
   const userCookie = {

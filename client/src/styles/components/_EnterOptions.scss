@@ -26,9 +26,13 @@
 
     .register-options{
         display: flex;
+        justify-content: center;
         .register-option{
-            padding: 10px;
-            flex-grow: 1;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 40px 15px 35px;
             background-color: $color-white;
             border: 2px solid $color-primary-light;
             border-radius: 8px;

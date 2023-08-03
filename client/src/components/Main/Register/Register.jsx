@@ -6,7 +6,6 @@ import { LocationContext } from "../../../context/locationContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Register = () => {
-  const { updateLocations } = useContext(LocationContext);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -113,7 +112,7 @@ const Register = () => {
 
   return (
     <>
-      <BackButton />
+      <BackButton link={"/"}/>
       <section className="form-register">
         <h2 className="title-register">
           {formSection === 1
@@ -283,13 +282,11 @@ const Register = () => {
             </>
           )}
         </form>
-        {formSection === 1 && <EnterOptions />}
+        <EnterOptions />
       </section>
-      {formSection === 1 && (
-        <span className="login-link">
-          ¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión</Link>
-        </span>
-      )}
+      <span className="login-link">
+        ¿Ya tienes una cuenta? <Link to={"/login"}>Iniciar sesión</Link>
+      </span>
     </>
   );
 };

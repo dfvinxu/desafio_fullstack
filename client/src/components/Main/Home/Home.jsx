@@ -9,6 +9,10 @@ import Slider from "./Slider/Slider";
 const libraries = ["places"];
 
 const Home = () => {
+  const [directionsResponse, setDirectionsResponse] = useState(null)
+  const [distance, setDistance] = useState("")
+  const [duration, setDuration] = useState("")
+
   const [markers, setMarkers] = useState([]);
   const [userCenter, setUserCenter] = useState({
     lat: 0,
@@ -23,6 +27,24 @@ const Home = () => {
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_API,
     libraries,
   });
+
+  const calculateRoute = async ({origin, destination}) => {
+
+    // eslint-disable-next-line no-undef
+    let directionsService = new google.maps.DirectionsService()
+    let results = await directionsService.route({
+      origin,
+      destination,
+      // eslint-disable-next-line no-undef
+      travelMode: google.maps.TravelMode.WALKING
+    })
+    setDirectionsResponse(results)
+  }
+
+  const clearRoute = () => {
+    setDirectionsResponse(null)
+
+  }
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -39,6 +61,9 @@ const Home = () => {
   const updateCoords = (newCoords) => setCoords(newCoords);
   const updateTipo = (newTipo) => setTipo(newTipo);
   const moveToCenter = () => updateCoords(userCenter)
+
+  console.log(directionsResponse)
+
   return (
     <>
       <article className="inputs">
@@ -51,8 +76,8 @@ const Home = () => {
         />
       </article>
       <Navbar />
-      {tipo ? <Slider markers={markers} /> : null}
-      {isLoaded ? (
+      {tipo ? <Slider markers={markers} calculateRoute={calculateRoute} userCenter={userCenter}/> : null}
+      {userCenter.lat !== 0 ? (
         <Map
           markers={markers}
           updateCoords={updateCoords}
@@ -60,6 +85,7 @@ const Home = () => {
           coords={coords}
           tipo={tipo}
           userCenter={userCenter}
+          directionsResponse={directionsResponse}
         />
       ) : (
         <p>Cargando...</p>

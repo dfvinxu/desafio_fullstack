@@ -12,6 +12,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/auth/signup": "http://localhost:3000",
+      "/auth/logout": "http://localhost:3000",
       "/auth/login": "http://localhost:3000",
       "/auth/google": "http://localhost:3000",
       "/auth/google/callback": "http://localhost:3000",
@@ -22,7 +23,7 @@ export default defineConfig({
       "/api/oficinas-turismo": "http://localhost:3000",
       "/api/favorites": "http://localhost:3000",
       "/api/favorites/eventos": "http://localhost:3000",
-      "/api/favorites/eventos/userId?": "http://localhost:3000"
+      "/api/favorites/eventos/userId?": "http://localhost:3000",
     },
   },
 });

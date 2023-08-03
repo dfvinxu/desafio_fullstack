@@ -18,9 +18,6 @@ const Main = () => {
     locations,
     updateLocations,
   };
-  console.log(locations);
-
- 
 
   return (
     <main>

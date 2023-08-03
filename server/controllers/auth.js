@@ -66,7 +66,7 @@ const checkEmailLogIn = async (req, res) => {
 
 //LOG OUT
 const logOut = (req, res) => {
-  res.clearCookie("access-token");
+  res.clearCookie("access-token").json({ status: 200, message: "You're out!" });
 };
 
 const googleLogin = (req, res) => {
