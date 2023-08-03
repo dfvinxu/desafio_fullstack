@@ -4,13 +4,10 @@ import Events from "../../../../../public/figma_svg/events.svg"
 import Like from "../../../../../public/figma_svg/like.svg"
 import Profile from "../../../../../public/figma_svg/profile.svg"
 
-import {LuPartyPopper} from "react-icons/lu"
-import {AiOutlineHeart, AiOutlineUser} from "react-icons/ai"
-
 const Navbar = () => {
   const navigate = useNavigate()
   return (
-    <section className="navbar">
+    <section className="navbar" >
       <article className="item">
         <Home />
         <span>Inicio</span>
@@ -19,7 +16,7 @@ const Navbar = () => {
         <Events />
         <span>Eventos</span>
       </article>
-      <article className="item">
+      <article className="item" onClick={() => navigate("/favoritos")}>
         <Like />
         <span>Favoritos</span>
       </article>

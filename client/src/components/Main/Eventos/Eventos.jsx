@@ -1,23 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { AiOutlineHeart, AiOutlineLink } from "react-icons/ai";
+import jwt_decode from "jwt-decode"
+import { AiOutlineHeart } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
-import { es } from "date-fns/locale";
-import { IoIosArrowBack } from "react-icons/io";
-import jwt_decode from "jwt-decode"
+import { es } from "date-fns/locale"; //  Spanish locale
 import { AuthContext } from "../../../context/authContext";
-import { IoIosArrowBack } from "react-icons/io";
-//  Spanish locale
-
-
+import { AiOutlineLink } from "react-icons/ai";
 //  Spanish locale
 import BackButton from "../BackButton";
-
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const { authCookie } = useContext(AuthContext)
+  const [favoriteEvents, setFavoriteEvents] = useState(false);
 
   useEffect(() => {
     // Fetch data from the API
@@ -49,10 +45,11 @@ const EventList = () => {
     return event.TITULO.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-   //FAVORITOS
+
+  //FAVORITOS
 
   
-   const handleFavorites = async(event) => {
+  const handleFavorites = async(event) => {
     try {
       if(authCookie){
         const decodedToken = jwt_decode(authCookie)
@@ -120,8 +117,8 @@ const EventList = () => {
                   <h2 className="event-title">{event.TITULO}</h2>
                   <p className="event-address">{event.DIRECCION}</p>
                 </article>
-                <section className="event-icons" onClick={() => handleFavorites(event)}>
-                  <AiOutlineHeart className="event-icon" />
+                <section className="event-icons">
+                  <AiOutlineHeart className="event-icon" onClick={() => handleFavorites(event)}/>
                   <a
                     href={`${event["CONTENT-URL"]}`}
                     target="_blank"
@@ -140,5 +137,3 @@ const EventList = () => {
 };
 
 export default EventList;
-
-

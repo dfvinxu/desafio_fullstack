@@ -74,7 +74,6 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const isValid = validateForm();
-
     if (isValid) {
       try {
         const response = await fetch("/auth/signup", {
