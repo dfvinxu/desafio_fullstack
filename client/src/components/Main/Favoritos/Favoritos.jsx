@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/authContext';
 const Favoritos = () => {
   const {authCookie} = useContext(AuthContext)
   const [favoriteEvents, setFavoriteEvents] = useState([]);
-  
+
   useEffect(() => {
     const fetchFavoriteEvents = async () => {
       try {
@@ -26,10 +26,10 @@ const Favoritos = () => {
         console.error('Error al obtener los eventos favoritos:', error);
       }
     };
-    
+
     fetchFavoriteEvents();
   }, [authCookie]);
-  
+
   return (
     <section>
       <h2>Tus eventos favoritos</h2>
