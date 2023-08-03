@@ -7,7 +7,6 @@ import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
 import { AuthContext } from "../../../context/authContext";
 import { AiOutlineLink } from "react-icons/ai";
-import { IoIosArrowBack } from "react-icons/io";
 //  Spanish locale
 import BackButton from "../BackButton";
 const EventList = () => {
