@@ -8,11 +8,8 @@ import Cookies from 'js-cookie';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [authCookie, setAuthCookie] = useState("")
+  const [userPosition, setUserPosition] = useState({lat: 0, lng: 0})
 
-  const updateCookie = (cookie) => {
-    setAuthCookie(cookie)
-  }
-  
   useEffect(() => {
     let token = Cookies.get("access-token")
     if (token) {
@@ -23,11 +20,18 @@ function App() {
     }
   }, [authCookie]);
 
- 
+  const updateCookie = (cookie) => {
+    setAuthCookie(cookie)
+  }
+
+  const updateUserPosition = ({lat, lng}) => setUserPosition({lat, lng})
+
   const userCookie = {
     isLoggedIn,
     updateCookie,
-    authCookie
+    authCookie,
+    updateUserPosition,
+    userPosition,
   };
 
   return (

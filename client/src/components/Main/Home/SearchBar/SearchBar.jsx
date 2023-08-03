@@ -1,6 +1,6 @@
 import usePlaceAutocomplete, {getGeocode, getLatLng } from "use-places-autocomplete"
 
-function SearchBar({updateCoords, isLoaded}) {
+function SearchBar({updateCoords,isLoaded}) {
   const { value, setValue, init, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete({
     initOnMount: false,
     cache: 24 * 60 * 60,
