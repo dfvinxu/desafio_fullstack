@@ -61,8 +61,13 @@
     gap: 10px;
     .event-icon {
       color: red;
+      transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .event-icon:active {
+      transform: scale(1.1);
     }
   }
+  
 }
 
 /* Image on */
@@ -98,3 +103,5 @@
   font-size: 14px;
   color: $color-base-gray-dark;
 }
+
+

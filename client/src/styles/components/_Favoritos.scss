@@ -1,0 +1,104 @@
+@import "../utils/mixins.scss";
+@import "../utils/_variables.scss";
+
+.favorites {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+  /* Frame styles */
+  .favorites-frame {
+    display: flex;
+    height: 700px;
+    flex-direction: column;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+  
+  /* Card styles */
+  .event-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    height: 145px;
+    background-color: $color-primary-xx-light;
+    border: 2px solid $color-neutral-light;
+    padding: 20px;
+  }
+  .event-info {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: space-around;
+    line-height: 15px;
+    .event-date {
+      color: $color-neutral-dark;
+      display: flex;
+      font-size: 14px;
+      padding-bottom: 5px;
+      font-weight: 600;
+    }
+  
+    .event-title {
+      color: $color-neutral-dark;
+      font-size: 16px;
+      padding-bottom: 8px;
+      font-weight: 400;
+      max-lines: 2;
+      width: 100%;
+      text-overflow: ellipsis;
+    }
+  
+    .event-address {
+      color: $color-neutral-dark;
+      font-weight: 400;
+      font-size: 12px;
+    }
+  
+    .event-icons {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      .event-icon {
+        color: red;
+      }
+    }
+  }
+  
+  /* Image on */
+  .event-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 8px;
+  }
+  
+  .search-bar-container {
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    gap: 15px;
+    background: #fff;
+    z-index: 999;
+  }
+  
+  .search-bar {
+    position: relative;
+    flex-grow: 1;
+  }
+  .icon {
+    @include icon;
+  }
+  .search-bar-container input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    border: 2px solid $color-primary-x-light;
+    background-color: $color-primary-xx-light;
+    font-size: 14px;
+    color: $color-base-gray-dark;
+  }
