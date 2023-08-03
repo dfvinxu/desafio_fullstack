@@ -41,6 +41,8 @@ const Favoritos = () => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+ 
+
 
   const handleDeleteFavorite = (eventTitulo) => {
     setFavoriteEvents((prevFavoriteEvents) =>

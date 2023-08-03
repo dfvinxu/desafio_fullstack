@@ -91,7 +91,6 @@ const Login = () => {
             )}
           </label>
           {error && <p className="error-message">{error}</p>}
-          {error && <p className="error-message">{error}</p>}
           <span className="forgot-password">
             <a href="">¿Has olvidado la contraseña?</a>
           </span>
