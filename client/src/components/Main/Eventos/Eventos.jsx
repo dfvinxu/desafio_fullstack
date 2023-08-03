@@ -7,13 +7,15 @@ import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
 import { AuthContext } from "../../../context/authContext";
 import { AiOutlineLink } from "react-icons/ai";
+import { AiFillHeart } from 'react-icons/ai'
+import { v4 as uuidv4 } from 'uuid';
 //  Spanish locale
 import BackButton from "../BackButton";
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const { authCookie } = useContext(AuthContext)
-  const [favoriteEvents, setFavoriteEvents] = useState(false);
+  const [favoriteEvents, setFavoriteEvents] = useState(true);
 
   useEffect(() => {
     // Fetch data from the API
@@ -71,7 +73,7 @@ const EventList = () => {
         });
   
         if (response.ok) {
-          setFavoriteEvents(true);
+          setFavoriteEvents(true)
           console.log('Guardado correctamente!');
         } else {
           console.log('No se ha guardado');
@@ -107,7 +109,7 @@ const EventList = () => {
           <p>No events found.</p>
         ) : (
           filteredEvents.map((event) => (
-            <article key={event.id} className="event-card">
+            <article key={uuidv4()} className="event-card">
               <img
                 src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg"
                 alt="event"
@@ -120,15 +122,18 @@ const EventList = () => {
                   <p className="event-address">{event.DIRECCION}</p>
                 </article>
                 <section className="event-icons">
-                  <AiOutlineHeart className="event-icon" onClick={() => handleFavorites(event)}/>
-                  <a
-                    href={`${event["CONTENT-URL"]}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <AiOutlineLink />
-                  </a>
-                </section>
+                    <AiFillHeart
+                      className="event-icon favorite"
+                      onClick={() => handleFavorites(event)}
+                    />
+              <a
+                href={`${event["CONTENT-URL"]}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <AiOutlineLink />
+              </a>
+            </section>
               </section>
             </article>
           ))

@@ -23,6 +23,6 @@ router.get('/favorites/eventos/:userId', favorites.getEventos);
 router.post('/favorites', favorites.createFavorite);
 router.post('/favorites/eventos', favorites.createEvento);
 router.delete('/favorites/:id?', favorites.deleteFavorite);
-router.delete('/favorites/eventos', favorites.deleteEvento);
+router.delete('/favorites/eventos/:favoriteId', favorites.deleteEvento);
 
 module.exports = router;
