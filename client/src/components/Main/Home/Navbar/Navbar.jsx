@@ -16,11 +16,11 @@ const Navbar = () => {
         <Events />
         <span>Eventos</span>
       </article>
-      <article className="item">
+      <article className="item" onClick={() => navigate("/favoritos")}>
         <Like />
         <span>Favoritos</span>
       </article>
-      <article className="item">
+      <article className="item" onClick={() => navigate("/profile")}>
         <Profile />
         <span>Perfil</span>
       </article>

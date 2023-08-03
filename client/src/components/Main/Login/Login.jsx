@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import { AuthContext } from "../../../context/authContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, updateCookie } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -33,7 +34,7 @@ const Login = () => {
       console.log(response);
 
       if (response.ok) {
-        setIsLoggedIn(true);
+        updateCookie(Cookies.get("access-token"));
 
         // Redirect to IntermediatePage
         navigate("/intermediate");
@@ -46,6 +47,7 @@ const Login = () => {
         setError("Email o contraseña no coincide");
       }
     } catch (error) {
+      console.log(error)
       console.error("Error");
     }
   };

@@ -25,7 +25,7 @@ authRouter.get(
 // //SIGN UP
 authRouter.post("/signup", authController.signUpUser);
 
-// // Log out
-// authRouter.get('/logout', authMiddleware.authCheck, authController.destroySessionAndClearCookies);
+// Log out
+authRouter.get("/logout", authController.logOut);
 
 module.exports = authRouter;

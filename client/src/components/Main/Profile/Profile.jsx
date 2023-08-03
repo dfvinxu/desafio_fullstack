@@ -1,3 +1,4 @@
+import axios from "axios"
 import Close from "../../../../public/figma_svg/xmark.svg"
 import ProfileIcon from "../../../../public/figma_svg/profile-gray.svg"
 import ProfileSettings from "../../../../public/figma_svg/profile-settings.svg"
@@ -5,8 +6,16 @@ import Faq from "../../../../public/figma_svg/faq.svg"
 import Messages from "../../../../public/figma_svg/mensajes.svg"
 import Language from "../../../../public/figma_svg/language.svg"
 import Forward from "../../../../public/figma_svg/go-forward.svg"
+import { useNavigate } from "react-router-dom"
 
 const Profile = () => {
+  const navigate = useNavigate()
+  const handleLogout = async () => {
+    await axios.get("/auth/logout")
+    setTimeout(() => {
+      navigate("/")
+    }, 400)
+  }
   return (
     <section className="profile-container">
       <span className="close-icon">
@@ -57,7 +66,7 @@ const Profile = () => {
       {/* Footer */}
       <footer className="profile-footer">
 
-        <button className="logout-btn">Cerrar sesión</button>
+        <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
         <article className="footer-info"> 
           <p>Política y privacidad</p>
           <article className="collab">

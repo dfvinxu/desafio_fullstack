@@ -8,8 +8,8 @@ const morgan = require("./utils/morgan");
 const error404 = require("./middlewares/error404");
 const session = require("express-session");
 const passport = require("passport");
-var cors = require('cors');
-const helmet = require('helmet');
+var cors = require("cors");
+const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 
 const allowedOrigins = ["http://localhost:5173"];
@@ -28,7 +28,7 @@ app.use(session({ secret: "SECRET" }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
-app.use(cookieParser())
+app.use(cookieParser());
 
 //Rutas API
 app.use("/api", router);
