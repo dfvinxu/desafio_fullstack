@@ -6,11 +6,11 @@ const favorites = require('../controllers/favorites')
 
 //Rutas fuentes
 
-router.get("/fuentes", dataController.getFuentes);
-router.get("/museos", dataController.getMuseos);
-router.get("/parks", dataController.getZonasVerdes);
-router.get("/oficinas-turismo", dataController.getOficinas);
-
+// router.get("/fuentes", dataController.getFuentes);
+// router.get("/museos", dataController.getMuseos);
+// router.get("/parks", dataController.getZonasVerdes);
+// router.get("/oficinas-turismo", dataController.getOficinas);
+router.get("/:type", dataController.getMarkers);
 // Rutas users
 
 router.get("/users/:id?", User.getUser);

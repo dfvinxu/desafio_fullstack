@@ -1,30 +1,47 @@
-import axios from "axios"
-import {TbFountain} from "react-icons/tb"
-import {PiTree} from "react-icons/pi"
-import {FaTemperatureFull, FaKitMedical} from "react-icons/fa6"
-import {GiGreekTemple} from "react-icons/gi"
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Fuente from "../../../../../public/figma_svg/fuentes-black.svg"
+import Arbol from "../../../../../public/figma_svg/tree-black.svg"
+import Temperatura from "../../../../../public/figma_svg/temperature-black.svg"
+import InterestPoints from "../../../../../public/figma_svg/interest-points-black.svg"
+import MedKit from "../../../../../public/figma_svg/med-black.svg"
+import Location from "../../../../../public/figma_svg/location.svg"
 
 
-const Filters = () => {
+import { getMarkers } from "../../../../../utils/script";
+
+const Filters = ({updateMarkers, center, updateTipo, moveToCenter}) => {
   const navigate = useNavigate();
-
   return(
     <section className="filters">
-      <article>
-        <TbFountain />
+      <article className="active" onClick={() => {
+        getMarkers({center, tipo: "fuentes"}).then(res => updateMarkers(res))
+        updateTipo("fuentes")
+      }}>
+        <Fuente />
+      </article>
+      <article onClick={() => {
+        getMarkers({center, tipo: "parques"}).then(res => updateMarkers(res))
+        updateTipo("parques")
+      }}>
+        <Arbol />
       </article>
       <article>
-        <PiTree />
+        <Temperatura />
       </article>
-      <article>
-        <FaTemperatureFull onClick={() => navigate('/weather')} />
+      <article onClick={() => {
+        getMarkers({center, tipo: "museos"}).then(res => updateMarkers(res))
+        updateTipo("museos")
+      }}>
+        <InterestPoints />
       </article>
-      <article>
-        <GiGreekTemple />
+      <article onClick={() => {
+        getMarkers({center, tipo: "salud"}).then(res => updateMarkers(res))
+        updateTipo("salud")
+      }}>
+        <MedKit/>
       </article>
-      <article>
-        <FaKitMedical />
+      <article onClick={moveToCenter}>
+        <Location />
       </article>
     </section>
   );

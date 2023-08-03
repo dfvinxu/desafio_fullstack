@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineLink } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import { format } from "date-fns"; // for changing the date
 import { es } from "date-fns/locale"; //  Spanish locale
 import Cookies from 'js-cookie';
 import jwt_decode from "jwt-decode"; 
 
+import { es } from "date-fns/locale";
+import { IoIosArrowBack } from "react-icons/io";
+//  Spanish locale
+import BackButton from "../BackButton";
 const EventList = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -91,44 +95,53 @@ const EventList = () => {
   }
 
   return (
-    <article>
-      <header>
-        <div className="search-bar-container">
+    <section className="events">
+      <article className="search-bar-container">
+        <BackButton link={"/home"} />
+        <article className="search-bar">
           <input
             type="text"
             value={searchTerm}
             onChange={handleSearchChange}
             placeholder="Buscar..."
           />
-          <BsSearch size={20} color="#808080" />
-        </div>
-      </header>
-      <div className="event-frame">
-        <h1>Eventos</h1>
+          <BsSearch className="icon" />
+        </article>
+      </article>
+      <h1>Eventos</h1>
+      <section className="event-frame">
         {filteredEvents.length === 0 ? (
-          <div>No events found.</div>
+          <p>No events found.</p>
         ) : (
           filteredEvents.map((event) => (
-            <div key={event.id} className="event-card">
+            <article key={event.id} className="event-card">
               <img
                 src="https://cdn.siasat.com/wp-content/uploads/2019/11/events-in-hyderabad.jpg"
-                alt="Event"
-                className="event-img"
+                alt="event"
+                className="event-image"
               />
-              <article className="event-details">
-                <p>{formatDate(event.FECHA)}</p>
-                <h2>{event.TITULO}</h2>
-                <p>{event.DIRECCION}</p>
-                <p>Hora: {event.HORA}</p>
-              </article>
-              <div className="event-icons">
-                <AiOutlineHeart size={20} color="#4B8BFF" onClick={() => handleFavorites(event)}/>
-              </div>
-            </div>
+              <section className="event-info">
+                <article className="event-details">
+                  <p className="event-date">{formatDate(event.FECHA)}</p>
+                  <h2 className="event-title">{event.TITULO}</h2>
+                  <p className="event-address">{event.DIRECCION}</p>
+                </article>
+                <section className="event-icons">
+                  <AiOutlineHeart className="event-icon" />
+                  <a
+                    href={`${event["CONTENT-URL"]}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <AiOutlineLink />
+                  </a>
+                </section>
+              </section>
+            </article>
           ))
         )}
-      </div>
-    </article>
+      </section>
+    </section>
   );
 };
 

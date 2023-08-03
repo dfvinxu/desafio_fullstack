@@ -1,21 +1,23 @@
 .filters{
-    z-index: 99999;
+    width: 100%;
+    z-index: 99;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px 18px;
     article{
         display: flex;
         justify-content: center;
         align-items: center;
         background-color: $color-white;
         border-radius: 50px;
-        font-size: 1.8rem;
-        padding: 15px;
+        font-size: 24px;
+        padding: 16px;
     }
     .active{
-        color: $color-white;
+        svg path{
+            stroke: $color-white;
+        }
         background-color: $color-primary-regular;
-        border-radius: 50px;
     }
 }

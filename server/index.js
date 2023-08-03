@@ -14,9 +14,11 @@ const cookieParser = require("cookie-parser");
 
 const allowedOrigins = ["http://localhost:5173"];
 
-app.use(cors({
-  origin: allowedOrigins,
-}));
+app.use(
+  cors({
+    origin: allowedOrigins,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,8 +29,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
 app.use(cookieParser())
-
-
 
 //Rutas API
 app.use("/api", router);
