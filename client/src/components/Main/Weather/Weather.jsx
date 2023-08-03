@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Weather = () => {
   const [temperatureData, setTemperatureData] = useState([]);
@@ -6,12 +8,16 @@ const Weather = () => {
   const [nextFiveDays, setNextFiveDays] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [temperatureAt3AM, setTemperatureAt3AM] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTemperatureData = async () => {
       const currentDate = new Date();
       const currentHour = currentDate.getHours();
-      const hours = Array.from({ length: 6 }, (_, i) => (currentHour + i * 4) % 24);
+      const hours = Array.from(
+        { length: 6 },
+        (_, i) => (currentHour + i * 4) % 24
+      );
       const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth() + 1;
       const currentDay = currentDate.getDate();
@@ -19,7 +25,10 @@ const Weather = () => {
       try {
         const cachedData = JSON.parse(localStorage.getItem("weatherData"));
 
-        if (cachedData && currentDate.getTime() - cachedData.timestamp < 3600000) {
+        if (
+          cachedData &&
+          currentDate.getTime() - cachedData.timestamp < 3600000
+        ) {
           setTemperatureData(cachedData.temperatureData);
           setCurrentTemperature(cachedData.currentTemperature);
           setNextFiveDays(cachedData.nextFiveDays);
@@ -70,7 +79,7 @@ const Weather = () => {
 
         setIsLoading(false);
       } catch (error) {
-        console.log(error)
+        console.log(error);
         // console.error("Error en la solicitud a la API:", error);
         setIsLoading(false);
       }
@@ -84,7 +93,10 @@ const Weather = () => {
       try {
         const temperatures = await Promise.all(
           nextFiveDays.map(async (data, index) => {
-            const tempAt3AM = await calculateTemperatureAt3AM(data.Prediccion_temperatura_Madrid, index);
+            const tempAt3AM = await calculateTemperatureAt3AM(
+              data.Prediccion_temperatura_Madrid,
+              index
+            );
             return tempAt3AM;
           })
         );
@@ -98,10 +110,14 @@ const Weather = () => {
   }, [nextFiveDays]);
 
   const currentDate = new Date();
-  const dayOfWeek = new Intl.DateTimeFormat("es", { weekday: "long" }).format(currentDate);
+  const dayOfWeek = new Intl.DateTimeFormat("es", { weekday: "long" }).format(
+    currentDate
+  );
 
   const calculateTemperatureAt3AM = async (temperatureAtNoon, index) => {
-    const nextDate = new Date(currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000);
+    const nextDate = new Date(
+      currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000
+    );
     nextDate.setHours(3);
 
     const year = nextDate.getFullYear();
@@ -119,9 +135,16 @@ const Weather = () => {
       return "N/A";
     }
   };
+  const handleGoBack = () => {
+    navigate("/home");
+  };
 
   return (
     <section className="temp-container">
+      <div className="go-back" onClick={handleGoBack}>
+        <IoIosArrowBack className="go-back-icon" />
+      </div>
+
       <h2 className="temp-title">El tiempo en Madrid</h2>
       <section className="day-temp">
         <article className="date-container">
@@ -129,21 +152,26 @@ const Weather = () => {
           <p>{currentDate.getDate()} </p>
         </article>
         <article className="hour-container">
-          <p>{currentDate.getHours()}:{currentDate.getMinutes()}</p>
+          <p>
+            {currentDate.getHours()}:{currentDate.getMinutes()}
+          </p>
         </article>
         {currentTemperature !== null ? (
           <article className="curr-temp">
-            <p> {Math.floor(currentTemperature)} °  </p>
+            <p> {Math.floor(currentTemperature)} ° </p>
             <article className="curr-des">
-            <p>
-              <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" />
-            </p>
-            <p>Soleado</p>
+              <p>
+                <img
+                  className="sun-icon"
+                  src="../../src/assets/sun.png"
+                  alt="Sun icon"
+                />
+              </p>
+              <p>Soleado</p>
             </article>
           </article>
         ) : (
           <p>Cargando la temperatura actual...</p>
-        
         )}
       </section>
       <section className="hour-temp">
@@ -151,7 +179,13 @@ const Weather = () => {
           <ul className="hour-list">
             {temperatureData.map((data) => (
               <li key={data.hour} className="hour-item">
-                {data.hour}:00 <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" />  {Math.floor(data.temperature)} ° 
+                {data.hour}:00{" "}
+                <img
+                  className="sun-icon"
+                  src="../../src/assets/sun.png"
+                  alt="Sun icon"
+                />{" "}
+                {Math.floor(data.temperature)} °
               </li>
             ))}
           </ul>
@@ -168,10 +202,17 @@ const Weather = () => {
                 <th></th>
                 <th></th>
                 <th>
-                  <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" />
+                  <img
+                    className="sun-icon"
+                    src="../../src/assets/sun.png"
+                    alt="Sun icon"
+                  />
                 </th>
                 <th>
-                  <img className="luna-icon" src="../../src/assets/luna.png"></img>
+                  <img
+                    className="luna-icon"
+                    src="../../src/assets/luna.png"
+                  ></img>
                 </th>
               </tr>
             </thead>
@@ -179,15 +220,23 @@ const Weather = () => {
               {nextFiveDays.map((data, index) => (
                 <tr key={index}>
                   <td>
-                    {new Date(currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000).toLocaleDateString("es", {
+                    {new Date(
+                      currentDate.getTime() + (index + 1) * 24 * 60 * 60 * 1000
+                    ).toLocaleDateString("es", {
                       day: "numeric",
                       weekday: "long",
                     })}
                   </td>
                   <td>
-                    <img className="sun-icon" src="../../src/assets/sun.png" alt="Sun icon" />
+                    <img
+                      className="sun-icon"
+                      src="../../src/assets/sun.png"
+                      alt="Sun icon"
+                    />
                   </td>
-                  <td className="days-temp">{Math.floor(data.Prediccion_temperatura_Madrid)} °C</td>
+                  <td className="days-temp">
+                    {Math.floor(data.Prediccion_temperatura_Madrid)} °C
+                  </td>
                   <td className="days-temp">{temperatureAt3AM[index]}</td>
                 </tr>
               ))}
@@ -202,12 +251,3 @@ const Weather = () => {
 };
 
 export default Weather;
-
-
-
-
-
-
-
-
-

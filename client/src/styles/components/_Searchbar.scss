@@ -1,7 +1,8 @@
 .search-bar{
     position: relative;
+    width: 100%;
     input{
-        @include input
+        @include search-bar
     }
     .icon{
         @include icon

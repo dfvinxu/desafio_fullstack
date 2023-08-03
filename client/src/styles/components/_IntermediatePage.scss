@@ -1,0 +1,14 @@
+@import "../utils/mixins.scss";
+@import "../utils/_variables.scss";
+
+.intermediate-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../../../../public/figma_svg/Bienvenida.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh; /* Use viewport height for full screen coverage */
+}

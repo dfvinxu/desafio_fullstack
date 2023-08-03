@@ -10,6 +10,7 @@ const passport = require("passport");
 let cors = require("cors");
 const helmet = require("helmet");
 require("./utils/mongo_db");
+const cookieParser = require("cookie-parser");
 
 const allowedOrigins = [
   "http://localhost:5173",
@@ -30,6 +31,7 @@ app.use(session({ secret: "SECRET" }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(helmet());
+app.use(cookieParser());
 
 //Rutas API
 app.use("/api", router);
