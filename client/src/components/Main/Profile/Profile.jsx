@@ -68,7 +68,7 @@ const Profile = () => {
         <FaUserCircle className="profile-picture"/> 
         <article className="profile-info">
         {console.log("UserInfo:", userInfo)}
-          <p className="profile-name">{loading ? "Cargando..." : userInfo.name}</p>
+          <p className="profile-name">Hola, {loading ? "Cargando..." : userInfo.name}</p>
           <p className="profile-email">{loading ? "Cargando..." : userInfo.email}</p>
         </article>
       </section>
