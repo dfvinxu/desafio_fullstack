@@ -1,11 +1,8 @@
-import React from "react";
 import usePlaceAutocomplete, {getGeocode, getLatLng } from "use-places-autocomplete"
-import { BsSearch } from "react-icons/bs";
 function SearchBar({updateCoords}) {
   const { value, setValue, suggestions: {status, data}, clearSuggestions } = usePlaceAutocomplete()
   const handleChange = (e) => setValue(e.target.value)
   const handleSelect = async (e) => {
-    console.log(e.target.textContent)
     setValue(e.target.textContent, false)
     clearSuggestions()
     let code = await getGeocode({address: e.target.textContent})

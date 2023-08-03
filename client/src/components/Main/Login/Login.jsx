@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import { AuthContext } from "../../../context/authContext";
@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLoggedIn, updateCookie } = useContext(AuthContext);
+  const { updateCookie } = useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -31,8 +31,6 @@ const Login = () => {
         body: JSON.stringify(userData),
       });
 
-      console.log(response);
-
       if (response.ok) {
         updateCookie(Cookies.get("access-token"));
 
@@ -47,8 +45,7 @@ const Login = () => {
         setError("Email o contraseña no coincide");
       }
     } catch (error) {
-      console.log(error)
-      console.error("Error");
+      console.error({error});
     }
   };
 
