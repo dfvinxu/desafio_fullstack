@@ -1,6 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import {AiOutlineHeart} from "react-icons/ai"
-import Filters from "../Filters/Filters";
+import { AiFillHeart } from 'react-icons/ai';
 import { AuthContext } from "../../../../context/authContext";
 const Slider = ({markers, calculateRoute, userPosition}) => {
   const {filters} = useContext(AuthContext)
@@ -49,7 +48,7 @@ const Slider = ({markers, calculateRoute, userPosition}) => {
                 <>
                   <article className="marker" key={i}>
                     <section className="marker-image-container">
-                      <AiOutlineHeart className="icon-like"/>
+                      <AiFillHeart className="icon-like"/>
                       <img src={`./image/${item["TIPO"]}.jpeg`} alt={item["TIPO"]} className="marker-image"/>
                     </section>
                     <p className="marker-title">{item["DIRECCION"].toLowerCase()}</p>
