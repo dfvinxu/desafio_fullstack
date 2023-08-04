@@ -26,9 +26,9 @@ const Map = React.memo(({markers, updateMarkers, updateCoords, tipo, directionsR
           minZoom: 15,
         }} 
           center={destination.lat !== 0 ? destination : userPosition}
-          onTilesLoaded={handleTileLoad}
+          onTilesLoaded={ tipo ? handleTileLoad : null}
         >
-          {markers && tipo ? <Pointers markers={markers}/> : null}
+          {markers ? <Pointers markers={markers}/> : null}
           {directionsResponse && <DirectionsRenderer directions={directionsResponse}/>}
         </GoogleMap>
       : 
