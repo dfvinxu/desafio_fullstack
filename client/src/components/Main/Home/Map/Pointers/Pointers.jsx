@@ -1,6 +1,7 @@
 import {icons} from "../../../../../../public/utils/icons"
 import { Marker } from "@react-google-maps/api";
 const Pointers = ({markers}) => {
+  console.log(markers)
   return(
     <>
       {markers.length ? markers.map((ele, i) => {

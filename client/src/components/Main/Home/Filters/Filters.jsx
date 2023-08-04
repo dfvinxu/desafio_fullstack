@@ -6,35 +6,43 @@ import InterestPoints from "../../../../../public/figma_svg/interest-points-blac
 import MedKit from "../../../../../public/figma_svg/med-black.svg"
 import Location from "../../../../../public/figma_svg/location.svg"
 import { getMarkers } from "../../../../../utils/script";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/authContext";
 
-const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter}) => {
+const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter, markers}) => {
   const navigate = useNavigate();
+  const {filters, updateFilters} = useContext(AuthContext)
   return(
     <section className="filters">
-      <article className="active" onClick={() => {
+      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "fuentes"}).then(res => updateMarkers(res))
         updateTipo("fuentes")
+        updateFilters("fuentes")
+
       }}>
         <Fuente />
       </article>
-      <article onClick={() => {
+      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "parques"}).then(res => updateMarkers(res))
         updateTipo("parques")
+        updateFilters("parques")
       }}>
         <Arbol />
       </article>
-      <article>
+      <article onClick={() => navigate("/weather")}>
         <Temperatura />
       </article>
-      <article onClick={() => {
+      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "museos"}).then(res => updateMarkers(res))
         updateTipo("museos")
+        updateFilters("museos")
       }}>
         <InterestPoints />
       </article>
-      <article onClick={() => {
+      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "salud"}).then(res => updateMarkers(res))
         updateTipo("salud")
+        updateFilters("salud")
       }}>
         <MedKit/>
       </article>

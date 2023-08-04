@@ -13,9 +13,6 @@ const Map = React.memo(({markers, updateMarkers, updateCoords, tipo, directionsR
     getMarkers({center, tipo}).then(res => updateMarkers(res))
     updateCoords(center)
   }
-  // useEffect(() => {
-  //   updateCoords()
-  // }, [])
 
   return(
     <>
