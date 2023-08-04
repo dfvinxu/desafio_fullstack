@@ -22,7 +22,7 @@ const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter, markers
       }}>
         <Fuente />
       </article>
-      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
+      <article className={filters.includes("parques") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "parques"}).then(res => updateMarkers(res))
         updateTipo("parques")
         updateFilters("parques")
@@ -32,14 +32,14 @@ const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter, markers
       <article onClick={() => navigate("/weather")}>
         <Temperatura />
       </article>
-      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
+      <article className={filters.includes("museos") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "museos"}).then(res => updateMarkers(res))
         updateTipo("museos")
         updateFilters("museos")
       }}>
         <InterestPoints />
       </article>
-      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {
+      <article className={filters.includes("salud") ? "active": ""} onClick={() => {
         getMarkers({center: userPosition, tipo: "salud"}).then(res => updateMarkers(res))
         updateTipo("salud")
         updateFilters("salud")
