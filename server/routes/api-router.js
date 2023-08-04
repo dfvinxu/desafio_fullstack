@@ -13,7 +13,7 @@ const favorites = require('../controllers/favorites')
 router.get("/:type", dataController.getMarkers);
 // Rutas users
 
-router.get("/users/:id?", User.getUser);
+router.get("/users/:id", User.getUser);
 router.post("/users", User.createUser);
 router.delete("/users/:id?", User.deleteUser);
 

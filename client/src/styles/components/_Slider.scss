@@ -50,6 +50,13 @@
                     width: 24px;
                     color: $color-white;
                     margin: 5px;
+                    transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+                }
+                icon-like:hover{
+                    transform: scale(1.1); 
+                }
+                icon-like:active{
+                    transform: scale(1.1);  
                 }
                 .marker-image{
                     width: 100%;
