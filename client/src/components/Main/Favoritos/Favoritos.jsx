@@ -38,11 +38,6 @@ const Favoritos = () => {
     fetchFavoriteEvents();
   }, [authCookie]);
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
- 
-
 
   const handleDeleteFavorite = (eventTitulo) => {
     setFavoriteEvents((prevFavoriteEvents) =>
@@ -54,15 +49,6 @@ const Favoritos = () => {
     <section className="favorites">
       <article className="search-bar-container">
         <BackButton link={"/home"} />
-        <article className="search-bar">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            placeholder="Buscar..."
-          />
-          <BsSearch className="icon" />
-        </article>
       </article>
       <h2>Tus eventos favoritos</h2>
       <section className="favorites-frame">

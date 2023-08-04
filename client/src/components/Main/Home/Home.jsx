@@ -10,7 +10,7 @@ import { AuthContext } from "../../../context/authContext";
 const libraries = ["places"];
 
 const Home = () => {
-  const {userPosition ,updateUserPosition, updateDestination} = useContext(AuthContext)
+  const {userPosition ,updateUserPosition, updateDestination, filters} = useContext(AuthContext)
   const [directionsResponse, setDirectionsResponse] = useState(null)
   const [markers, setMarkers] = useState([]);
   const [coords, setCoords] = useState({
@@ -37,7 +37,6 @@ const Home = () => {
   }, []);
 
   const calculateRoute = async ({origin, destination}) => {
-    console.log(origin, destination)
     // eslint-disable-next-line no-undef
     let directionsService = new google.maps.DirectionsService()
     let results = await directionsService.route({
@@ -53,7 +52,13 @@ const Home = () => {
     setDirectionsResponse(null)
   }
 
-  const updateMarkers = (newMarkers) => setMarkers(newMarkers);
+  const updateMarkers = (newMarkers, mode) => {
+    if(mode === "remove"){
+      setMarkers([...newMarkers])
+    } else {
+      setMarkers([...markers, ...newMarkers])
+    }
+  };
   const updateCoords = (newCoords) => setCoords(newCoords);
   const updateTipo = (newTipo) => setTipo(newTipo);
   const moveToCenter = () => {
@@ -69,10 +74,11 @@ const Home = () => {
           userPosition={userPosition}
           updateTipo={updateTipo}
           moveToCenter={moveToCenter}
+          markers={markers}
         />
       </article>
       <Navbar />
-      {tipo ? <Slider markers={markers} calculateRoute={calculateRoute} userPosition={userPosition}/> : null}
+      {filters.length ? <Slider markers={markers} calculateRoute={calculateRoute} userPosition={userPosition}/> : null}
       {userPosition && isLoaded ? (
         <Map
           markers={markers}
