@@ -6,36 +6,44 @@ import InterestPoints from "../../../../../public/figma_svg/interest-points-blac
 import MedKit from "../../../../../public/figma_svg/med-black.svg"
 import Location from "../../../../../public/figma_svg/location.svg"
 import { getMarkers } from "../../../../../utils/script";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/authContext";
 
-const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter}) => {
+const Filters = ({updateMarkers, userPosition, updateTipo, moveToCenter, markers}) => {
   const navigate = useNavigate();
+  const {filters, updateFilters} = useContext(AuthContext)
+
+  const handleClick = (tipo) => {
+    if (!filters.includes(tipo)){
+      getMarkers({center: userPosition, tipo}).then(res => updateMarkers(res))
+      updateTipo(tipo)
+      updateFilters(tipo)
+    } else {
+      let newTipo = tipo
+      if(tipo=== "parques") newTipo = "parques_y_jardines"
+      updateMarkers([...markers.filter(ele => ele["TIPO"] !== newTipo.toUpperCase())], "remove")
+      updateTipo(null)
+      updateFilters(filters.filter(ele => {
+        return ele !== tipo
+      }), "remove")
+    }
+  }
+
   return(
     <section className="filters">
-      <article className="active" onClick={() => {
-        getMarkers({center: userPosition, tipo: "fuentes"}).then(res => updateMarkers(res))
-        updateTipo("fuentes")
-      }}>
+      <article className={filters.includes("fuentes") ? "active": ""} onClick={() => {handleClick("fuentes")}}>
         <Fuente />
       </article>
-      <article onClick={() => {
-        getMarkers({center: userPosition, tipo: "parques"}).then(res => updateMarkers(res))
-        updateTipo("parques")
-      }}>
+      <article className={filters.includes("parques") ? "active": ""} onClick={() => {handleClick("parques")}}>
         <Arbol />
       </article>
-      <article>
+      <article onClick={() => navigate("/weather")}>
         <Temperatura />
       </article>
-      <article onClick={() => {
-        getMarkers({center: userPosition, tipo: "museos"}).then(res => updateMarkers(res))
-        updateTipo("museos")
-      }}>
+      <article className={filters.includes("museos") ? "active": ""} onClick={() => {handleClick("museos")}}>
         <InterestPoints />
       </article>
-      <article onClick={() => {
-        getMarkers({center: userPosition, tipo: "salud"}).then(res => updateMarkers(res))
-        updateTipo("salud")
-      }}>
+      <article className={filters.includes("salud") ? "active": ""} onClick={() => {handleClick("salud")}}>
         <MedKit/>
       </article>
       <article onClick={moveToCenter}>
